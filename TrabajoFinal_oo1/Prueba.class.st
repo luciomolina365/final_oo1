@@ -1,5 +1,5 @@
 Class {
 	#name : #Prueba,
 	#superclass : #Object,
-	#category : #'TrabajoFinal_oo1'
+	#category : #'TrabajoFinal_oo1-Model'
 }
