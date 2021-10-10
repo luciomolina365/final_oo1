@@ -11,7 +11,6 @@ Class {
 { #category : #'instance creation' }
 Donante class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLegajo email:unEmail nroDonante:unNumero [
 |instancia|
-
 instancia:= self newNombre: unNombre  dni:unDni  telefono:unTelefono  legajo:unLegajo. 
 instancia email: unEmail nroDonante:unNumero.
 ^instancia  
