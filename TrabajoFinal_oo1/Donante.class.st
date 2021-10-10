@@ -7,3 +7,18 @@ Class {
 	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
+
+{ #category : #'instance creation' }
+Donante class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLegajo email:unEmail nroDonante:unNumero [
+|instancia|
+
+instancia:= self newNombre: unNombre  dni:unDni  telefono:unTelefono  legajo:unLegajo. 
+instancia email: unEmail nroDonante:unNumero.
+^instancia  
+]
+
+{ #category : #'as yet unclassified' }
+Donante >> email:unEmail nroDonante:unNumero [
+email:=unEmail.
+nroDonante:=unNumero.
+]
