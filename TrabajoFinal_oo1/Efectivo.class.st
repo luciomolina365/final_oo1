@@ -1,5 +1,5 @@
 Class {
-	#name : #Prueba,
-	#superclass : #MedioDePago,
+	#name : #Efectivo,
+	#superclass : #Object,
 	#category : #'TrabajoFinal_oo1-Model'
 }
