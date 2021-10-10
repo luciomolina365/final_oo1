@@ -16,7 +16,7 @@ Integrante class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLe
  
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Integrante >> nombre:unNombre dni:unDni telefono:unTelefono legajo:unLegajo [ 
 nombre:=unNombre.
 dni:=unDni.
