@@ -5,6 +5,7 @@ Class {
 }
 
 { #category : #abstract }
-MedioDePago >> gastoDeComicion:unPago [
-self subclassResponsibility.
+MedioDePago >> gastoDeComicion: unPago [
+
+	self subclassResponsibility
 ]

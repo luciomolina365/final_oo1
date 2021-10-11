@@ -17,7 +17,8 @@ instancia email: unEmail nroDonante:unNumero.
 ]
 
 { #category : #'as yet unclassified' }
-Donante >> email:unEmail nroDonante:unNumero [
-email:=unEmail.
-nroDonante:=unNumero.
+Donante >> email: unEmail nroDonante: unNumero [
+
+	email := unEmail.
+	nroDonante := unNumero
 ]

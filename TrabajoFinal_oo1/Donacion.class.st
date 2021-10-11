@@ -17,9 +17,10 @@ Donacion class >> newDonante:unDonante fecha:unaFecha tipo:unTipo organizacion:u
 ]
 
 { #category : #accessing }
-Donacion >> donante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion [
-donante:=unDonante.
-fecha:=unaFecha.
-tipo:=unTipo.
-organizacion:=unaOrganizacion.
+Donacion >> donante: unDonante fecha: unaFecha tipo: unTipo organizacion: unaOrganizacion [
+
+	donante := unDonante.
+	fecha := unaFecha.
+	tipo := unTipo.
+	organizacion := unaOrganizacion
 ]

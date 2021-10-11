@@ -11,12 +11,13 @@ Class {
 }
 
 { #category : #accessing }
-Organizacion >> agregarDonante:unDonante [
-donantes add:unDonante 
+Organizacion >> agregarDonante: unDonante [
+
+	donantes add: unDonante
 ]
 
 { #category : #initialization }
 Organizacion >> initialize [
-donantes:=OrderedCollection new.
 
+	donantes := OrderedCollection new
 ]

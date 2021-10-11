@@ -17,9 +17,10 @@ Integrante class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLe
 ]
 
 { #category : #accessing }
-Integrante >> nombre:unNombre dni:unDni telefono:unTelefono legajo:unLegajo [ 
-nombre:=unNombre.
-dni:=unDni.
-telefono:=unTelefono.
-legajo:=unLegajo.
+Integrante >> nombre: unNombre dni: unDni telefono: unTelefono legajo: unLegajo [
+
+	nombre := unNombre.
+	dni := unDni.
+	telefono := unTelefono.
+	legajo := unLegajo
 ]

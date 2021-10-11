@@ -10,13 +10,15 @@ Class {
 }
 
 { #category : #accessing }
-Grupo >> agregarIntegrante:unIntegrante [
-integrantes add:unIntegrante
+Grupo >> agregarIntegrante: unIntegrante [
+
+	integrantes add: unIntegrante
 ]
 
 { #category : #accessing }
-Grupo >> agregarOrganizacion:unaOrganizacion [
-organizaciones add:unaOrganizacion
+Grupo >> agregarOrganizacion: unaOrganizacion [
+
+	organizaciones add: unaOrganizacion
 ]
 
 { #category : #initialization }
