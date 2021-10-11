@@ -13,9 +13,9 @@ Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unL
  
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Coordinador >> consultaDePagos: unDonante [
 
-	^ donaciones collect: [ :d | 
+	^ donaciones select: [ :d | 
 		  (d perteneceA: unDonante) & d esDeAnioActual ]
 ]
