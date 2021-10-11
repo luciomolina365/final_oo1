@@ -6,21 +6,30 @@ Class {
 		'monto',
 		'donante',
 		'organizacion',
-		'tipo'
+		'tipo',
+		'mesPago'
 	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
 { #category : #'instance creation' }
-Donacion class >> newDonante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion [
-^self new donante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion 
+Donacion class >> newDonante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
+
+	^ self new
+		  donante: unDonante
+		  monto: unMonto
+		  mesPago: unMesPago
+		  untipo: unTipo
+		  organizacion: unaOrganizacion
 ]
 
 { #category : #private }
-Donacion >> donante: unDonante fecha: unaFecha tipo: unTipo organizacion: unaOrganizacion [
+Donacion >> donante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
 
 	donante := unDonante.
-	fecha := unaFecha.
+	monto := unMonto.
+	fecha := Date today.
+	mesPago := unMesPago.
 	tipo := unTipo.
 	organizacion := unaOrganizacion
 ]
@@ -28,12 +37,12 @@ Donacion >> donante: unDonante fecha: unaFecha tipo: unTipo organizacion: unaOrg
 { #category : #accessing }
 Donacion >> esDeAnioActual [
 
-	^ fecha year == Date today year
+	^ fecha year = Date today year
 ]
 
 { #category : #accessing }
 Donacion >> perteneceA: unDonante [
 
 	^ donante == unDonante
-	"O PREGUNTO POR SU NRO"
+
 ]

@@ -16,9 +16,20 @@ instancia email: unEmail nroDonante:unNumero.
 ^instancia  
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 Donante >> email: unEmail nroDonante: unNumero [
 
 	email := unEmail.
 	nroDonante := unNumero
+]
+
+{ #category : #private }
+Donante >> esUnCoordinador [
+	^false
+]
+
+{ #category : #private }
+Donante >> tieneNro: unNroDeDonante [
+
+	^ nroDonante == unNroDeDonante
 ]
