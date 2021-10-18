@@ -77,5 +77,4 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 
 	coor := self coordinador.
 	coor agregarDonacion: donacion.
-	^ true
 ]
