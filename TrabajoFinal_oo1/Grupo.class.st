@@ -60,19 +60,22 @@ Grupo >> initialize [
 ]
 
 { #category : #accessing }
-Grupo >> pagoDonacion: unDonante monto: unMonto mes: unMes organizacion: unaOrganizacion tipoPago: unTipoPago [
+Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion tipoPago: unTipoPago [
 
 	| coor donacion |
-	(unaOrganizacion existeDonante: unDonante) ifFalse: [ 
-		^ false "No existe el donante con ese nro(en esta org)" ].
+	(unaOrganizacion existeDonante: unNroDonante) ifFalse: [ 
+		^ false "No existe el donante con ese nro" ].
+
 
 	donacion := Donacion
-		            newDonante: unDonante
+		            newDonante:
+		            (unaOrganizacion donanteConNro: unNroDonante)
 		            monto: unMonto
 		            mesPago: unMes
 		            untipo: unTipoPago
 		            organizacion: unaOrganizacion.
 
 	coor := self coordinador.
-	coor agregarDonacion: donacion
+	coor agregarDonacion: donacion.
+	^ true
 ]
