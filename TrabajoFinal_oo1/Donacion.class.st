@@ -41,6 +41,12 @@ Donacion >> esDeAnioActual [
 ]
 
 { #category : #accessing }
+Donacion >> montoNeto [
+
+	^ monto - (tipo gastoDeComision: monto)
+]
+
+{ #category : #accessing }
 Donacion >> perteneceA: unDonante [
 
 	^ donante == unDonante
