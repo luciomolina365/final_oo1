@@ -6,23 +6,25 @@ Class {
 		'monto',
 		'donante',
 		'organizacion',
-		'tipo'
+		'tipo',
+		'mesAPagar'
 	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
 { #category : #'instance creation' }
-Donacion class >> newDonante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion [
-^self new donante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion 
+Donacion class >> newDonacion:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion mesAPagar:unMes [
+^self new donante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion mesAPagar:unMes
 ]
 
 { #category : #private }
-Donacion >> donante: unDonante fecha: unaFecha tipo: unTipo organizacion: unaOrganizacion [
+Donacion >> donante: unDonante fecha: unaFecha tipo: unTipo organizacion: unaOrganizacion mesAPagar:unMes [
 
 	donante := unDonante.
 	fecha := unaFecha.
 	tipo := unTipo.
-	organizacion := unaOrganizacion
+	organizacion := unaOrganizacion.
+	mesAPagar:=unMes.
 ]
 
 { #category : #accessing }

@@ -14,6 +14,13 @@ Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unL
 ]
 
 { #category : #accessing }
+Coordinador >> agregarDonacion:nroDonante mes:unMes forma:unaForma organizacion:unaOrganizacion fecha:unaFecha [
+
+donaciones add: (Donacion newDonacion:nroDonante fecha:unaFecha  tipo:unaForma  organizacion:unaOrganizacion mesAPagar:unMes)
+			 
+]
+
+{ #category : #accessing }
 Coordinador >> consultaDePagos: unDonante [
 
 	^ donaciones select: [ :d | 
