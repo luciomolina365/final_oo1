@@ -10,10 +10,31 @@ Class {
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
+{ #category : #'instance creation' }
+Organizacion class >> newRepresentante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
+
+	^ self new
+		  representante: unRepresentante
+		  denominacion: unaDenominacion
+		  direccion: unaDireccion
+]
+
 { #category : #accessing }
 Organizacion >> agregarDonante: unDonante [
 
-	donantes add: unDonante
+	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
+]
+
+{ #category : #private }
+Organizacion >> donanteConNro: unNroDeDonante [
+
+	^ donantes detect: [ :d | d tieneNro: unNroDeDonante ]
+]
+
+{ #category : #private }
+Organizacion >> existeDonante: unDonante [
+
+	^ donantes includes: unDonante.
 ]
 
 { #category : #initialization }
@@ -39,6 +60,15 @@ self pagoDonacion:nroDonante  mes:unMes  forma:(Efectivo new)  cordinador:unCord
 Organizacion >> pagoFacil:nroDonante mes:unMes cordinador:unCordinador [
 
 self pagoDonacion:nroDonante  mes:unMes  forma:(PagoFacil new)  cordinador:unCordinador
+]
+
+{ #category : #private }
+Organizacion >> representante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
+
+	representanteLegal := unRepresentante.
+	denominacion := unaDenominacion.
+	direccion := unaDireccion.
+	
 ]
 
 { #category : #accessing }
