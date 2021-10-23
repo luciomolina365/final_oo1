@@ -1,7 +1,7 @@
 Class {
 	#name : #Coordinador,
 	#superclass : #Integrante,
-	#instVars : [
+	#classVars : [
 		'donaciones'
 	],
 	#classInstVars : [
@@ -22,19 +22,20 @@ Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unL
 ]
 
 { #category : #accessing }
-Coordinador >> agregarDonacion: unDonante mes:unMes forma:unaForma organizacion:unaOrganizacion [ 
+Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto:unMonto [
 
-donaciones add: (Donacion newDonacion: unDonante monto: (unaForma monto) mesPago:unMes untipo:unaForma  organizacion:unaOrganizacion)
-
-
+	donaciones agregarDonacion: (Donacion
+			 newDonacion: unDonante
+			 monto: unMonto
+			 mesPago: unMes
+			 untipo: unaForma
+			 organizacion: unaOrganizacion)
 ]
 
 { #category : #accessing }
-Coordinador >> calculoIngresos:fecha1 y:fecha2 [
-|aux enFecha|
-aux:= DateLapse newFechaIni: fecha1 fechaFin:fecha2.
-enFecha:=donaciones select: [:donacion | aux includesDate:(donacion fecha)].
-^enFecha sumNumbers:[:donacion|donacion monto]
+Coordinador >> calculoIngresos: fecha1 y: fecha2 [
+
+^ self sumaDeDonaciones: (self donacionesEntre: fecha1 y: fecha2)
 ]
 
 { #category : #accessing }
@@ -44,7 +45,23 @@ Coordinador >> consultaDePagos: unDonante [
 		  (d perteneceA: unDonante) & d esDeAnioActual ]
 ]
 
+{ #category : #accessing }
+Coordinador >> donacionesEntre: fecha1 y: fecha2 [
+
+	| periodo donacionesEnFecha |
+	periodo := DateLapse newFechaIni: fecha1 fechaFin: fecha2.
+	donacionesEnFecha := donaciones select: [ :donacion | 
+		                     periodo includesDate: donacion fecha ].
+	^ donacionesEnFecha
+]
+
 { #category : #private }
 Coordinador >> esUnCoordinador [
 	^true
+]
+
+{ #category : #private }
+Coordinador >> sumaDeDonaciones: donacionesEnFecha [
+
+	^ donacionesEnFecha sumNumbers: [ :donacion | donacion montoNeto ]
 ]

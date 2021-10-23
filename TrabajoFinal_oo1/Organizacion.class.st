@@ -44,13 +44,14 @@ Organizacion >> initialize [
 ]
 
 { #category : #accessing }
-Organizacion >> pagoDonacion: unDonante mes: unMes forma: unaForma cordinador: unCordinador [
+Organizacion >> pagoDonacion: unDonante mes: unMes forma: unaForma cordinador: unCoordinador monto:unMonto [
 
-	unCordinador
+	unCoordinador
 		agregarDonacion: unDonante 
 		mes: unMes
 		forma: unaForma
 		organizacion: self
+		monto:unMonto.
 	"esto sera llamado solo por el cordinador"
 ]
 
@@ -60,8 +61,9 @@ Organizacion >> pagoEfectivo: nroDonante mes: unMes monto: unMonto cordinador: u
 	self
 		verificacionDonante: nroDonante
 		mes: unMes
-		forma: (Efectivo newMonto: unMonto)
+		forma: (Efectivo new)
 		cordinador: unCordinador
+		monto:unMonto.
 ]
 
 { #category : #accessing }
@@ -70,8 +72,9 @@ Organizacion >> pagoFacil: nroDonante mes: unMes monto: unMonto cordinador: unCo
 	self
 		verificacionDonante: nroDonante
 		mes: unMes
-		forma: (PagoFacil newMonto: unMonto)
+		forma: (PagoFacil new)
 		cordinador: unCordinador
+		monto:unMonto
 ]
 
 { #category : #private }
@@ -84,17 +87,18 @@ Organizacion >> representante: unRepresentante denominacion: unaDenominacion dir
 ]
 
 { #category : #accessing }
-Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [
+Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [ 
 
 	self
 		verificacionDonante: nroDonante
 		mes: unMes
-		forma: (TransferenciaBancaria newMonto: unMonto)
+		forma: (TransferenciaBancaria new)
 		cordinador: unCordinador
+		monto:unMonto
 ]
 
 { #category : #accessing }
-Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordinador: unCordinador [
+Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordinador: unCordinador monto:unMonto [
 
 	(self existeDonante: nroDonante)
 		ifTrue: [ 
@@ -102,7 +106,8 @@ Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordi
 				pagoDonacion: (self donanteConNro:nroDonante)
 				mes: unMes
 				forma: unaForma
-				cordinador: unCordinador ]
+				cordinador: unCordinador
+				monto:unMonto ]
 		ifFalse: [ ^ false ]
 	"aca se devolvera en pantalla q primero debe estar registrado en el sistema de la organizacion"
 ]
