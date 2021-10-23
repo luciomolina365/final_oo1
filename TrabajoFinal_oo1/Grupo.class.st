@@ -51,6 +51,11 @@ Grupo >> coordinador [
 	^ integrantes detect: [ :i | i esUnCoordinador ]
 ]
 
+{ #category : #accessing }
+Grupo >> ingresosEntre:fecha1 y:fecha2 [
+^((self coordinador) calculoIngresos:fecha1 y:fecha2)
+]
+
 { #category : #initialization }
 Grupo >> initialize [
 

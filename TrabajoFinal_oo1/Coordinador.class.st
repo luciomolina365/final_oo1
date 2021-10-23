@@ -30,6 +30,14 @@ donaciones add: (Donacion newDonacion: unDonante monto: (unaForma monto) mesPago
 ]
 
 { #category : #accessing }
+Coordinador >> calculoIngresos:fecha1 y:fecha2 [
+|aux enFecha|
+aux:= DateLapse newFechaIni: fecha1 fechaFin:fecha2.
+enFecha:=donaciones select: [:donacion | aux includesDate:(donacion fecha)].
+^enFecha sumNumbers:[:donacion|donacion monto]
+]
+
+{ #category : #accessing }
 Coordinador >> consultaDePagos: unDonante [
 
 	^ donaciones select: [ :d | 

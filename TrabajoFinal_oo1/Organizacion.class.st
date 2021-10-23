@@ -84,9 +84,13 @@ Organizacion >> representante: unRepresentante denominacion: unaDenominacion dir
 ]
 
 { #category : #accessing }
-Organizacion >> transferenciaBancaria:nroDonante mes:unMes monto:unMonto cordinador:unCordinador [
+Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [
 
-self verificacionDonante:nroDonante  mes:unMes  forma:(TransferenciaBancaria newMonto:unMonto)  cordinador:unCordinador
+	self
+		verificacionDonante: nroDonante
+		mes: unMes
+		forma: (TransferenciaBancaria newMonto: unMonto)
+		cordinador: unCordinador
 ]
 
 { #category : #accessing }

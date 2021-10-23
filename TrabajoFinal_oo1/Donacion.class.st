@@ -41,6 +41,11 @@ Donacion >> esDeAnioActual [
 ]
 
 { #category : #accessing }
+Donacion >> fecha [
+^fecha 
+]
+
+{ #category : #accessing }
 Donacion >> montoNeto [
 
 	^ monto - (tipo gastoDeComision: monto)
