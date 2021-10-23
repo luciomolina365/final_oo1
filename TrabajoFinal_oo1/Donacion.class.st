@@ -7,18 +7,13 @@ Class {
 		'donante',
 		'organizacion',
 		'tipo',
-		'mesAPagar'
+		'mesPago'
 	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
 { #category : #'instance creation' }
-Donacion class >> newDonacion:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion mesAPagar:unMes [
-^self new donante:unDonante fecha:unaFecha tipo:unTipo organizacion:unaOrganizacion mesAPagar:unMes
-]
-
-{ #category : #'instance creation' }
-Donacion class >> newDonante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
+Donacion class >> newDonacion: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
 
 	^ self new
 		  donante: unDonante
@@ -26,16 +21,6 @@ Donacion class >> newDonante: unDonante monto: unMonto mesPago: unMesPago untipo
 		  mesPago: unMesPago
 		  untipo: unTipo
 		  organizacion: unaOrganizacion
-]
-
-{ #category : #private }
-Donacion >> donante: unDonante fecha: unaFecha tipo: unTipo organizacion: unaOrganizacion mesAPagar:unMes [
-
-	donante := unDonante.
-	fecha := unaFecha.
-	tipo := unTipo.
-	organizacion := unaOrganizacion.
-	mesAPagar:=unMes.
 ]
 
 { #category : #private }

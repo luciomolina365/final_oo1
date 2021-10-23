@@ -22,10 +22,11 @@ Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unL
 ]
 
 { #category : #accessing }
-Coordinador >> agregarDonacion:nroDonante mes:unMes forma:unaForma organizacion:unaOrganizacion fecha:unaFecha [
+Coordinador >> agregarDonacion: unDonante mes:unMes forma:unaForma organizacion:unaOrganizacion [ 
 
-donaciones add: (Donacion newDonacion:nroDonante fecha:unaFecha  tipo:unaForma  organizacion:unaOrganizacion mesAPagar:unMes)
-			 
+donaciones add: (Donacion newDonacion: unDonante monto: (unaForma monto) mesPago:unMes untipo:unaForma  organizacion:unaOrganizacion)
+
+
 ]
 
 { #category : #accessing }
