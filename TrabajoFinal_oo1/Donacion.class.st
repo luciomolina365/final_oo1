@@ -35,17 +35,21 @@ Donacion >> donante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo 
 ]
 
 { #category : #'as yet unclassified' }
-Donacion >> enMes:unaFecha [
-^((unaFecha monthIndex = fecha monthIndex) & ((fecha subtractDate:unaFecha)<=31)) 
+Donacion >> enFecha: unaOrderedCollection [
 
-"
-f1:=Date today .
-f2:=Date today subtractDays: f1 dayOfMonth - 1.
-f3:=DateLapse newFechaInicial: f2 fechaFinal:f1.
-f4:=Date year: 2021 month: 10 day: 24.
+	| inicioMes periodo fechaActual |
+	fechaActual:=Date today.
+	(fechaActual day = 1) ifTrue: [ inicioMes := fechaActual subtractDays: fechaActual dayOfMonth] ifFalse: [ inicioMes := fechaActual subtractDays: fechaActual dayOfMonth - 1. ].
+	
 
-f3 includesDate:f4.
-"
+	periodo := DateLapse newFechaInicial: inicioMes fechaFinal: fechaActual.
+	^ unaOrderedCollection select: [ :donacion | donacion enMes: periodo ]
+]
+
+{ #category : #'as yet unclassified' }
+Donacion >> enMes:unDateLapse [
+	^ unDateLapse includesDate: fecha
+
 ]
 
 { #category : #accessing }

@@ -55,7 +55,7 @@ Grupo >> coordinador [
 Grupo >> donacionesOrganizacion:unaOrganizacion [ 
 
 |todasDonaciones|
-todasDonaciones:=(self coordinador) todasDonaciones:unaOrganizacion fecha:Date today.
+todasDonaciones:=(self coordinador) todasDonaciones:unaOrganizacion.
 ]
 
 { #category : #accessing }
