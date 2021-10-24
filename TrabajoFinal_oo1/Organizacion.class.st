@@ -2,6 +2,7 @@ Class {
 	#name : #Organizacion,
 	#superclass : #Object,
 	#instVars : [
+		'nombre',
 		'denominacion',
 		'representanteLegal',
 		'direccion',
