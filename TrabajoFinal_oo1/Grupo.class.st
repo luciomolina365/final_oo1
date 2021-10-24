@@ -7,9 +7,6 @@ Class {
 		'organizaciones',
 		'nroSigDonante'
 	],
-	#classInstVars : [
-		'soleInstance'
-	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
@@ -59,16 +56,23 @@ Grupo >> coordinador [
 	^ integrantes detect: [ :i | i esUnCoordinador ]
 ]
 
-{ #category : #'as yet unclassified' }
-Grupo >> donacionesOrganizacion:unaOrganizacion [ 
+{ #category : #accessing }
+Grupo >> donacionesOrganizacion: unaOrganizacion [
 
-|todasDonaciones|
-todasDonaciones:=(self coordinador) todasDonaciones:unaOrganizacion.
+	^ self coordinador todasLasDonacionesDe: unaOrganizacion
 ]
 
 { #category : #accessing }
-Grupo >> ingresosEntre:fecha1 y:fecha2 [
-^((self coordinador) calculoIngresos:fecha1 y:fecha2)
+Grupo >> donantesOrganizacion: unaOrganizacion [
+
+	^ ((self donacionesOrganizacion: unaOrganizacion) 
+	collect: [:donacion | donacion donante ]) asSet
+]
+
+{ #category : #accessing }
+Grupo >> ingresosEntre: fecha1 y: fecha2 [
+
+	^ self coordinador calcularIngresosEntre: fecha1 y: fecha2
 ]
 
 { #category : #initialization }
@@ -91,7 +95,6 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 	(unaOrganizacion existeDonante: unNroDonante) ifFalse: [ 
 		^ false "No existe el donante con ese nro" ].
 
-
 	donacion := Donacion
 		            newDonante:
 		            (unaOrganizacion donanteConNro: unNroDonante)
@@ -102,4 +105,5 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 
 	coor := self coordinador.
 	coor agregarDonacion: donacion.
+	^ true
 ]
