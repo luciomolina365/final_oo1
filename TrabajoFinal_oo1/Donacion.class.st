@@ -38,18 +38,18 @@ Donacion >> donante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo 
 Donacion >> enFecha: unaOrderedCollection [
 
 	| inicioMes periodo fechaActual |
-	fechaActual:=Date today.
-	(fechaActual day = 1) ifTrue: [ inicioMes := fechaActual subtractDays: fechaActual dayOfMonth] ifFalse: [ inicioMes := fechaActual subtractDays: fechaActual dayOfMonth - 1. ].
-	
+	fechaActual := Date today.
 
-	periodo := DateLapse newFechaInicial: inicioMes fechaFinal: fechaActual.
-	^ unaOrderedCollection select: [ :donacion | donacion enMes: periodo ]
-]
+	inicioMes := Date
+		             year: fechaActual year
+		             month: fechaActual month
+		             day: 1.
 
-{ #category : #'as yet unclassified' }
-Donacion >> enMes:unDateLapse [
-	^ unDateLapse includesDate: fecha
+	periodo := DateLapse
+		           newFechaInicial: inicioMes
+		           fechaFinal: fechaActual.
 
+	^ unaOrderedCollection select: [ :donacion | donacion pertenceAlPeriodo: periodo ]
 ]
 
 { #category : #accessing }
@@ -64,8 +64,9 @@ Donacion >> fecha [
 ]
 
 { #category : #'as yet unclassified' }
-Donacion >> mismaOrganizacion:unaOrganizacion [
-^(organizacion = unaOrganizacion) 
+Donacion >> mismaOrganizacion: unaOrganizacion [
+
+	^ organizacion = unaOrganizacion
 ]
 
 { #category : #accessing }
@@ -77,6 +78,12 @@ Donacion >> montoNeto [
 { #category : #accessing }
 Donacion >> organizacion [
 ^organizacion 
+]
+
+{ #category : #'as yet unclassified' }
+Donacion >> pertenceAlPeriodo: unDateLapse [
+
+	^ unDateLapse includesDate: fecha
 ]
 
 { #category : #accessing }
