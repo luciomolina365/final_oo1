@@ -27,6 +27,16 @@ Organizacion >> agregarDonante: unDonante [
 	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
 ]
 
+{ #category : #accessing }
+Organizacion >> denominacion [
+^denominacion 
+]
+
+{ #category : #accessing }
+Organizacion >> direccion [
+^direccion
+]
+
 { #category : #private }
 Organizacion >> donanteConNro: unNroDeDonante [
 
@@ -94,6 +104,11 @@ Organizacion >> pagoFacil: nroDonante mes: unMes monto: unMonto cordinador: unCo
 ]
 
 { #category : #accessing }
+Organizacion >> representanteLegal [
+^representanteLegal
+]
+
+{ #category : #accessing }
 Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [ 
 
 	self
@@ -106,7 +121,6 @@ Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cord
 
 { #category : #accessing }
 Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordinador: unCordinador monto:unMonto [
-
 	(self existeDonante: nroDonante)
 		ifTrue: [ 
 			self

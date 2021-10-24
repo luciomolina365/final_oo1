@@ -32,3 +32,26 @@ parent:=aParent
 OrganizacionComponent >> parent [ 
 ^parent
 ]
+
+{ #category : #rendering }
+OrganizacionComponent >> renderContentOn: aCanvas [
+	aCanvas paragraph
+		with: [ aCanvas heading
+				level: 2;
+				with: [aCanvas anchor style:'color:darkviolet';
+					callback: [ ];
+				with: (organizacion nombre) ]].
+			aCanvas text: ' Denominacion '.
+			aCanvas space.
+			aCanvas text: organizacion denominacion.
+			aCanvas space.
+			aCanvas text: 'Representante Legal'.
+			aCanvas space.
+			aCanvas text: organizacion representanteLegal .
+			aCanvas break.
+			aCanvas text: 'Direccion'.
+			aCanvas space.
+			aCanvas text: organizacion direccion.
+			aCanvas break.
+			aCanvas horizontalRule.
+]
