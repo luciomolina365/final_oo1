@@ -22,7 +22,7 @@ Integrante >> esUnCoordinador [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 Integrante >> nombre: unNombre dni: unDni telefono: unTelefono legajo: unLegajo [
 
 	nombre := unNombre.

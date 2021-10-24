@@ -33,9 +33,9 @@ Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacio
 ]
 
 { #category : #accessing }
-Coordinador >> calculoIngresos: fecha1 y: fecha2 [
+Coordinador >> calcularIngresosEntre: fecha1 y: fecha2 [
 
-^ self sumaDeDonaciones: (self donacionesEntre: fecha1 y: fecha2)
+	^ self sumaDeDonaciones: (self donacionesEntre: fecha1 y: fecha2)
 ]
 
 { #category : #accessing }
@@ -48,15 +48,20 @@ Coordinador >> consultaDePagos: unDonante [
 { #category : #accessing }
 Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 
-	| periodo donacionesEnFecha |
+	| periodo |
 	periodo := DateLapse newFechaIni: fecha1 fechaFin: fecha2.
-	donacionesEnFecha := donaciones select: [ :donacion | 
-		                     periodo includesDate: donacion fecha ].
-	^ donacionesEnFecha
+
+	^ donaciones select: [ :donacion | 
+		  periodo includesDate: donacion fecha ]
 ]
 
-{ #category : #'as yet unclassified' }
-Coordinador >> enFecha: unaOrderedCollection [
+{ #category : #accessing }
+Coordinador >> esUnCoordinador [
+	^true
+]
+
+{ #category : #private }
+Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
 
 	| inicioMes periodo fechaActual |
 	fechaActual := Date today.
@@ -70,12 +75,8 @@ Coordinador >> enFecha: unaOrderedCollection [
 		           newFechaInicial: inicioMes
 		           fechaFinal: fechaActual.
 
-	^ unaOrderedCollection select: [ :donacion | donacion pertenceAlPeriodo: periodo ]
-]
-
-{ #category : #private }
-Coordinador >> esUnCoordinador [
-	^true
+	^ unColeccionDeDonaciones select: [ :donacion | 
+		  donacion perteneceAlPeriodo: periodo ]
 ]
 
 { #category : #private }
@@ -84,9 +85,10 @@ Coordinador >> sumaDeDonaciones: donacionesEnFecha [
 	^ donacionesEnFecha sumNumbers: [ :donacion | donacion montoNeto ]
 ]
 
-{ #category : #'as yet unclassified' }
-Coordinador >> todasDonaciones:unaOrganizacion [ 
-^self enFecha:(donaciones select: [:each|each mismaOrganizacion:unaOrganizacion ]).
+{ #category : #accessing }
+Coordinador >> todasLasDonacionesDe: unaOrganizacion [
 
-
+	^ self pertenecenAlMesActual:
+		  (donaciones select: [ :each | 
+			   each mismaOrganizacion: unaOrganizacion ])
 ]

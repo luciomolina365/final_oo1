@@ -23,6 +23,12 @@ Donacion class >> newDonacion: unDonante monto: unMonto mesPago: unMesPago untip
 		  organizacion: unaOrganizacion
 ]
 
+{ #category : #accessing }
+Donacion >> donante [
+
+	^ donante
+]
+
 { #category : #private }
 Donacion >> donante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
 
@@ -40,12 +46,13 @@ Donacion >> esDeAnioActual [
 	^ fecha year = Date today year
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 Donacion >> fecha [
-^fecha 
+
+	^ fecha
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Donacion >> mismaOrganizacion: unaOrganizacion [
 
 	^ organizacion = unaOrganizacion
@@ -57,15 +64,10 @@ Donacion >> montoNeto [
 	^ monto - (tipo gastoDeComision: monto)
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 Donacion >> organizacion [
-^organizacion 
-]
 
-{ #category : #'as yet unclassified' }
-Donacion >> pertenceAlPeriodo: unDateLapse [
-
-	^ unDateLapse includesDate: fecha
+	^ organizacion
 ]
 
 { #category : #accessing }
@@ -73,4 +75,10 @@ Donacion >> perteneceA: unDonante [
 
 	^ donante == unDonante
 
+]
+
+{ #category : #accessing }
+Donacion >> perteneceAlPeriodo: unDateLapse [
+
+	^ unDateLapse includesDate: fecha
 ]

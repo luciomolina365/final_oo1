@@ -44,15 +44,15 @@ Organizacion >> initialize [
 ]
 
 { #category : #accessing }
-Organizacion >> pagoDonacion: unDonante mes: unMes forma: unaForma cordinador: unCoordinador monto:unMonto [
+Organizacion >> pagoDonacion: unDonante mes: unMes forma: unaForma coordinador: unCoordinador monto: unMonto [
 
 	unCoordinador
-		agregarDonacion: unDonante 
+		agregarDonacion: unDonante
 		mes: unMes
 		forma: unaForma
 		organizacion: self
-		monto:unMonto.
-	"esto sera llamado solo por el cordinador"
+		monto: unMonto
+	"esto sera llamado solo por el coordinador"
 ]
 
 { #category : #accessing }
@@ -106,7 +106,7 @@ Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordi
 				pagoDonacion: (self donanteConNro:nroDonante)
 				mes: unMes
 				forma: unaForma
-				cordinador: unCordinador
+				coordinador: unCordinador
 				monto:unMonto ]
 		ifFalse: [ ^ false ]
 	"aca se devolvera en pantalla q primero debe estar registrado en el sistema de la organizacion"
