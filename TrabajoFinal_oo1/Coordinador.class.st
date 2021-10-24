@@ -38,7 +38,7 @@ Coordinador >> calcularIngresosEntre: fecha1 y: fecha2 [
 	^ self sumaDeDonaciones: (self donacionesEntre: fecha1 y: fecha2)
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Coordinador >> consultaDePagos: unDonante [
 
 	^ donaciones select: [ :d | 
@@ -58,6 +58,12 @@ Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 { #category : #accessing }
 Coordinador >> esUnCoordinador [
 	^true
+]
+
+{ #category : #accessing }
+Coordinador >> ingresosOrganizacion: unaOrganizacion [
+
+	self sumaDeDonaciones: (self todasLasDonacionesDe: unaOrganizacion)
 ]
 
 { #category : #private }
@@ -80,9 +86,9 @@ Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
 ]
 
 { #category : #private }
-Coordinador >> sumaDeDonaciones: donacionesEnFecha [
+Coordinador >> sumaDeDonaciones: coleccionDeDonaciones [
 
-	^ donacionesEnFecha sumNumbers: [ :donacion | donacion montoNeto ]
+	^ coleccionDeDonaciones sumNumbers: [ :donacion | donacion montoNeto ]
 ]
 
 { #category : #accessing }

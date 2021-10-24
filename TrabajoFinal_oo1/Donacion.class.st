@@ -52,10 +52,16 @@ Donacion >> fecha [
 	^ fecha
 ]
 
+{ #category : #private }
+Donacion >> fecha: unaFecha [
+
+	fecha := unaFecha
+]
+
 { #category : #accessing }
 Donacion >> mismaOrganizacion: unaOrganizacion [
 
-	^ organizacion = unaOrganizacion
+	^ organizacion == unaOrganizacion
 ]
 
 { #category : #accessing }

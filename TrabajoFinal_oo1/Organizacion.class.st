@@ -21,7 +21,7 @@ Organizacion class >> newNombre: unNombre representante: unRepresentante denomin
 		  direccion: unaDireccion
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Organizacion >> agregarDonante: unDonante [
 
 	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
@@ -35,12 +35,6 @@ Organizacion >> denominacion [
 { #category : #accessing }
 Organizacion >> direccion [
 ^direccion
-]
-
-{ #category : #private }
-Organizacion >> donanteConNro: unNroDeDonante [
-
-	^ donantes detect: [ :d | d tieneNro: unNroDeDonante ]
 ]
 
 { #category : #private }
@@ -70,65 +64,13 @@ Organizacion >> nombre:unNombre representante: unRepresentante denominacion: una
 ]
 
 { #category : #accessing }
-Organizacion >> pagoDonacion: unDonante mes: unMes forma: unaForma coordinador: unCoordinador monto: unMonto [
-
-	unCoordinador
-		agregarDonacion: unDonante
-		mes: unMes
-		forma: unaForma
-		organizacion: self
-		monto: unMonto
-	"esto sera llamado solo por el coordinador"
-]
-
-{ #category : #accessing }
-Organizacion >> pagoEfectivo: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [
-
-	self
-		verificacionDonante: nroDonante
-		mes: unMes
-		forma: (Efectivo new)
-		cordinador: unCordinador
-		monto:unMonto.
-]
-
-{ #category : #accessing }
-Organizacion >> pagoFacil: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [
-
-	self
-		verificacionDonante: nroDonante
-		mes: unMes
-		forma: (PagoFacil new)
-		cordinador: unCordinador
-		monto:unMonto
-]
-
-{ #category : #accessing }
 Organizacion >> representanteLegal [
 ^representanteLegal
 ]
 
 { #category : #accessing }
-Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cordinador: unCordinador [ 
+Organizacion >> verificacionDonante: nroDonante [ 
 
-	self
-		verificacionDonante: nroDonante
-		mes: unMes
-		forma: (TransferenciaBancaria new)
-		cordinador: unCordinador
-		monto:unMonto
-]
-
-{ #category : #accessing }
-Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordinador: unCordinador monto:unMonto [
-	(self existeDonante: nroDonante)
-		ifTrue: [ 
-			self
-				pagoDonacion: (self donanteConNro:nroDonante)
-				mes: unMes
-				forma: unaForma
-				coordinador: unCordinador
-				monto:unMonto ]
-		ifFalse: [ ^ false ]
-	"aca se devolvera en pantalla q primero debe estar registrado en el sistema de la organizacion"
+	(self existeDonante: nroDonante) ifTrue: [ ^ true ].
+	^ false
 ]
