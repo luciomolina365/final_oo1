@@ -28,10 +28,11 @@ Grupo >> agregarOrganizacion: unaOrganizacion [
 ]
 
 { #category : #accessing }
-Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
+Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion nombre:unNombre [
 
 	self agregarOrganizacion: (Organizacion
-			 newRepresentante: unRepresentante
+			 newNombre:unNombre
+			 representante: unRepresentante
 			 denominacion: unaDenominacion
 			 direccion: unaDireccion)
 ]

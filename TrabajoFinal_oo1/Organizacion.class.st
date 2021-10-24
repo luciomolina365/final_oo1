@@ -12,9 +12,10 @@ Class {
 }
 
 { #category : #'instance creation' }
-Organizacion class >> newRepresentante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
+Organizacion class >> newNombre: unNombre representante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
 
 	^ self new
+		  nombre: unNombre
 		  representante: unRepresentante
 		  denominacion: unaDenominacion
 		  direccion: unaDireccion
@@ -42,6 +43,15 @@ Organizacion >> existeDonante: unDonante [
 Organizacion >> initialize [
 
 	donantes := OrderedCollection new
+]
+
+{ #category : #private }
+Organizacion >> nombre:unNombre representante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
+
+	representanteLegal := unRepresentante.
+	denominacion := unaDenominacion.
+	direccion := unaDireccion.
+	nombre:= unNombre
 ]
 
 { #category : #accessing }
@@ -76,15 +86,6 @@ Organizacion >> pagoFacil: nroDonante mes: unMes monto: unMonto cordinador: unCo
 		forma: (PagoFacil new)
 		cordinador: unCordinador
 		monto:unMonto
-]
-
-{ #category : #private }
-Organizacion >> representante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
-
-	representanteLegal := unRepresentante.
-	denominacion := unaDenominacion.
-	direccion := unaDireccion.
-	
 ]
 
 { #category : #accessing }
