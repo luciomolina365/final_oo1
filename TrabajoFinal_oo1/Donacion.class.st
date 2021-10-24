@@ -34,24 +34,6 @@ Donacion >> donante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo 
 	organizacion := unaOrganizacion
 ]
 
-{ #category : #'as yet unclassified' }
-Donacion >> enFecha: unaOrderedCollection [
-
-	| inicioMes periodo fechaActual |
-	fechaActual := Date today.
-
-	inicioMes := Date
-		             year: fechaActual year
-		             month: fechaActual month
-		             day: 1.
-
-	periodo := DateLapse
-		           newFechaInicial: inicioMes
-		           fechaFinal: fechaActual.
-
-	^ unaOrderedCollection select: [ :donacion | donacion pertenceAlPeriodo: periodo ]
-]
-
 { #category : #accessing }
 Donacion >> esDeAnioActual [
 

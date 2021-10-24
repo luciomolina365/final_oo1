@@ -55,6 +55,24 @@ Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 	^ donacionesEnFecha
 ]
 
+{ #category : #'as yet unclassified' }
+Coordinador >> enFecha: unaOrderedCollection [
+
+	| inicioMes periodo fechaActual |
+	fechaActual := Date today.
+
+	inicioMes := Date
+		             year: fechaActual year
+		             month: fechaActual month
+		             day: 1.
+
+	periodo := DateLapse
+		           newFechaInicial: inicioMes
+		           fechaFinal: fechaActual.
+
+	^ unaOrderedCollection select: [ :donacion | donacion pertenceAlPeriodo: periodo ]
+]
+
 { #category : #private }
 Coordinador >> esUnCoordinador [
 	^true
@@ -68,10 +86,7 @@ Coordinador >> sumaDeDonaciones: donacionesEnFecha [
 
 { #category : #'as yet unclassified' }
 Coordinador >> todasDonaciones:unaOrganizacion [ 
-
-|orga|
-orga:= donaciones select: [:each|each mismaOrganizacion:unaOrganizacion ].
-orga select:[:each|each enMes ]
+^self enFecha:(donaciones select: [:each|each mismaOrganizacion:unaOrganizacion ]).
 
 
 ]
