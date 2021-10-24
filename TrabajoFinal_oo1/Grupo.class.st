@@ -51,6 +51,13 @@ Grupo >> coordinador [
 	^ integrantes detect: [ :i | i esUnCoordinador ]
 ]
 
+{ #category : #'as yet unclassified' }
+Grupo >> donacionesOrganizacion:unaOrganizacion [ 
+
+|todasDonaciones|
+todasDonaciones:=(self coordinador) todasDonaciones:unaOrganizacion fecha:Date today.
+]
+
 { #category : #accessing }
 Grupo >> ingresosEntre:fecha1 y:fecha2 [
 ^((self coordinador) calculoIngresos:fecha1 y:fecha2)

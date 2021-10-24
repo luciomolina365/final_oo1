@@ -65,3 +65,14 @@ Coordinador >> sumaDeDonaciones: donacionesEnFecha [
 
 	^ donacionesEnFecha sumNumbers: [ :donacion | donacion montoNeto ]
 ]
+
+{ #category : #'as yet unclassified' }
+Coordinador >> todasDonaciones:unaOrganizacion fecha:unaFecha [
+
+|orga|
+orga:= donaciones select: [:each|each mismaOrganizacion:unaOrganizacion ].
+orga select:[:each|each enMes:unaFecha ]
+ 
+
+
+]

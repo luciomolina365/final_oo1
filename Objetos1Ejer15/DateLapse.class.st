@@ -17,6 +17,15 @@ DateLapse class >> newFechaIni: unaFechaI fechaFin: unaFechaF [
 	^instanciaFecha .
 ]
 
+{ #category : #'instance creation' }
+DateLapse class >> newFechaInicial: unaFechaI fechaFinal: unaFechaF [
+	
+	|instanciaFecha|
+	instanciaFecha := self new.
+	instanciaFecha newFechaInicial: unaFechaI fechaFinal:unaFechaF .
+	^instanciaFecha .
+]
+
 { #category : #accesing }
 DateLapse >> from [
 ^from
@@ -34,6 +43,12 @@ DateLapse >> newFechaIni: unaFechaI fechaFin: unaFechaF [
 
 from :=Date fromString: unaFechaI.
 to :=Date fromString: unaFechaF.
+]
+
+{ #category : #'instance creation' }
+DateLapse >> newFechaInicial: unaFechaI fechaFinal:unaFechaF [.
+from :=unaFechaI.
+to :=unaFechaF.
 ]
 
 { #category : #accesing }
