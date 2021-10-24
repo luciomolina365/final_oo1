@@ -7,5 +7,5 @@ Class {
 { #category : #abstract }
 PagoFacil >> gastoDeComision: unPago [
 
-	^ unPago / 100 * 10
+	^ (unPago / 100 * 10) asFloat
 ]
