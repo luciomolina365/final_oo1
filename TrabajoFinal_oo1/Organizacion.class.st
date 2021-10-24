@@ -45,6 +45,11 @@ Organizacion >> initialize [
 	donantes := OrderedCollection new
 ]
 
+{ #category : #accessing }
+Organizacion >> nombre [
+^nombre
+]
+
 { #category : #private }
 Organizacion >> nombre:unNombre representante: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
 
