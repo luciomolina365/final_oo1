@@ -10,6 +10,11 @@ Class {
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
+{ #category : #accessing }
+Grupo class >> soleInstance [
+^soleInstance ifNil:[soleInstance:=self new].
+]
+
 { #category : #private }
 Grupo >> agregarIntegrante: unIntegrante [
 
@@ -23,10 +28,11 @@ Grupo >> agregarOrganizacion: unaOrganizacion [
 ]
 
 { #category : #accessing }
-Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion [
+Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion nombre:unNombre [
 
 	self agregarOrganizacion: (Organizacion
-			 newRepresentante: unRepresentante
+			 newNombre:unNombre
+			 representante: unRepresentante
 			 denominacion: unaDenominacion
 			 direccion: unaDireccion)
 ]
@@ -76,6 +82,11 @@ Grupo >> initialize [
 	nroSigDonante := 0.
 	organizaciones := OrderedCollection new.
 	integrantes := OrderedCollection new
+]
+
+{ #category : #'as yet unclassified' }
+Grupo >> organizaciones [
+^organizaciones 
 ]
 
 { #category : #accessing }
