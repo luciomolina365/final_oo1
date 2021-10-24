@@ -60,6 +60,12 @@ Coordinador >> esUnCoordinador [
 	^true
 ]
 
+{ #category : #'as yet unclassified' }
+Coordinador >> ingresosOrganizacion: unaOrganizacion [
+
+	self sumaDeDonaciones: (self todasLasDonacionesDe: unaOrganizacion)
+]
+
 { #category : #private }
 Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
 
@@ -80,9 +86,9 @@ Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
 ]
 
 { #category : #private }
-Coordinador >> sumaDeDonaciones: donacionesEnFecha [
+Coordinador >> sumaDeDonaciones: coleccionDeDonaciones [
 
-	^ donacionesEnFecha sumNumbers: [ :donacion | donacion montoNeto ]
+	^ coleccionDeDonaciones sumNumbers: [ :donacion | donacion montoNeto ]
 ]
 
 { #category : #accessing }

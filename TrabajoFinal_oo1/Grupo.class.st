@@ -84,9 +84,10 @@ Grupo >> initialize [
 	integrantes := OrderedCollection new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 Grupo >> organizaciones [
-^organizaciones 
+
+	^ organizaciones
 ]
 
 { #category : #accessing }
@@ -94,7 +95,7 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 
 	| coor donacion |
 	(unaOrganizacion existeDonante: unNroDonante) ifFalse: [ 
-		^ false "No existe el donante con ese nro" ].
+		^ false "No existe el donante con ese nro en la org" ].
 
 	donacion := Donacion
 		            newDonante:
@@ -105,6 +106,6 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 		            organizacion: unaOrganizacion.
 
 	coor := self coordinador.
-	coor agregarDonacion: donacion.
+	coor agregarDonacion: donacion."asasdasdasdasdads"
 	^ true
 ]

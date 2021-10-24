@@ -21,7 +21,7 @@ Organizacion class >> newNombre: unNombre representante: unRepresentante denomin
 		  direccion: unaDireccion
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Organizacion >> agregarDonante: unDonante [
 
 	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
@@ -59,7 +59,7 @@ Organizacion >> nombre:unNombre representante: unRepresentante denominacion: una
 	nombre:= unNombre
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Organizacion >> pagoDonacion: unDonante mes: unMes forma: unaForma coordinador: unCoordinador monto: unMonto [
 
 	unCoordinador
@@ -105,16 +105,16 @@ Organizacion >> transferenciaBancaria: nroDonante mes: unMes monto: unMonto cord
 ]
 
 { #category : #accessing }
-Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordinador: unCordinador monto:unMonto [
+Organizacion >> verificacionDonante: nroDonante mes: unMes forma: unaForma cordinador: unCordinador monto: unMonto [
 
 	(self existeDonante: nroDonante)
 		ifTrue: [ 
 			self
-				pagoDonacion: (self donanteConNro:nroDonante)
+				pagoDonacion: (self donanteConNro: nroDonante)
 				mes: unMes
 				forma: unaForma
 				coordinador: unCordinador
-				monto:unMonto ]
-		ifFalse: [ ^ false ]
-	"aca se devolvera en pantalla q primero debe estar registrado en el sistema de la organizacion"
+				monto: unMonto.
+			^ true ]
+		ifFalse: [ ^ false ] "aca se devolvera en pantalla q primero debe estar registrado en el sistema de la organizacion"
 ]
