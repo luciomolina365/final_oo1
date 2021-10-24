@@ -38,7 +38,7 @@ Coordinador >> calcularIngresosEntre: fecha1 y: fecha2 [
 	^ self sumaDeDonaciones: (self donacionesEntre: fecha1 y: fecha2)
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Coordinador >> consultaDePagos: unDonante [
 
 	^ donaciones select: [ :d | 
@@ -60,7 +60,7 @@ Coordinador >> esUnCoordinador [
 	^true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Coordinador >> ingresosOrganizacion: unaOrganizacion [
 
 	self sumaDeDonaciones: (self todasLasDonacionesDe: unaOrganizacion)

@@ -27,7 +27,14 @@ Grupo >> agregarOrganizacion: unaOrganizacion [
 	organizaciones add: unaOrganizacion
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
+Grupo >> altaDeIntegranteEnOrganizacion: unNroDonante organizacion: unaOrganizacion [
+
+	(self existeIntegrante: unNroDonante) ifTrue: [ 
+		unaOrganizacion agregarDonante: (self integranteConNro: unNroDonante) ]
+]
+
+{ #category : #CasosDeUso }
 Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion nombre:unNombre [
 
 	self agregarOrganizacion: (Organizacion
@@ -37,7 +44,7 @@ Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccio
 			 direccion: unaDireccion)
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Grupo >> altaDonante: unNombre dni: unDni telefono: unTelefono email: unEmail legajo: unLegajo [
 
 	nroSigDonante := nroSigDonante + 1.
@@ -70,7 +77,13 @@ Grupo >> donantesOrganizacion: unaOrganizacion [
 	collect: [:donacion | donacion donante ]) asSet
 ]
 
-{ #category : #accessing }
+{ #category : #private }
+Grupo >> existeIntegrante: unDonante [
+
+	^ integrantes includes: unDonante.
+]
+
+{ #category : #CasosDeUso }
 Grupo >> ingresosEntre: fecha1 y: fecha2 [
 
 	^ self coordinador calcularIngresosEntre: fecha1 y: fecha2
@@ -85,27 +98,29 @@ Grupo >> initialize [
 ]
 
 { #category : #private }
+Grupo >> integranteConNro: unNroDeDonante [
+
+	^ integrantes detect: [ :d | d tieneNro: unNroDeDonante ]
+]
+
+{ #category : #private }
 Grupo >> organizaciones [
 
 	^ organizaciones
 ]
 
-{ #category : #accessing }
+{ #category : #CasosDeUso }
 Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion tipoPago: unTipoPago [
 
-	| coor donacion |
-	(unaOrganizacion existeDonante: unNroDonante) ifFalse: [ 
-		^ false "No existe el donante con ese nro en la org" ].
-
-	donacion := Donacion
-		            newDonante:
-		            (unaOrganizacion donanteConNro: unNroDonante)
-		            monto: unMonto
-		            mesPago: unMes
-		            untipo: unTipoPago
-		            organizacion: unaOrganizacion.
+	| coor |
+	(unaOrganizacion verificacionDonante: unNroDonante) ifFalse: [ 
+		^ false ].
 
 	coor := self coordinador.
-	coor agregarDonacion: donacion."asasdasdasdasdads"
-	^ true
+	coor
+		agregarDonacion: (self integranteConNro: unNroDonante)
+		mes: unMes
+		forma: unTipoPago
+		organizacion: self
+		monto: unMonto
 ]
