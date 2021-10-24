@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-Donacion class >> newDonacion: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
+Donacion class >> newDonante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
 
 	^ self new
 		  donante: unDonante

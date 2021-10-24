@@ -25,7 +25,7 @@ Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unL
 Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto:unMonto [
 
 	donaciones agregarDonacion: (Donacion
-			 newDonacion: unDonante
+			 newDonante: unDonante
 			 monto: unMonto
 			 mesPago: unMes
 			 untipo: unaForma

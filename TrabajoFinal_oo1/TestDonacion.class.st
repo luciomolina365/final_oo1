@@ -1,5 +1,10 @@
 Class {
 	#name : #TestDonacion,
-	#superclass : #Object,
+	#superclass : #TestCase,
 	#category : #'TrabajoFinal_oo1-Tests'
 }
+
+{ #category : #running }
+TestDonacion >> setUp [
+	
+]

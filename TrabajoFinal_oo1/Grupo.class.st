@@ -86,7 +86,7 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 		^ false "No existe el donante con ese nro" ].
 
 	donacion := Donacion
-		            newDonacion:
+		            newDonante:
 		            (unaOrganizacion donanteConNro: unNroDonante)
 		            monto: unMonto
 		            mesPago: unMes
