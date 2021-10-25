@@ -17,7 +17,7 @@ Coordinador class >> newNombre: unNombre dni: unDni telefono: unTelefono legajo:
 		  legajo: unLegajo
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 Coordinador >> agregarDonacion: unaDonacion [
 	donaciones add: unaDonacion .
 ]
@@ -79,7 +79,8 @@ Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 { #category : #CasosDeUso }
 Coordinador >> ingresosOrganizacionEnMesActual: unaOrganizacion [
 
-	self sumaDeDonaciones: (self todasLasDonacionesEnMesActualDe: unaOrganizacion)
+	^ ((self todasLasDonacionesEnMesActualDe: unaOrganizacion) 
+		   sumNumbers: [ :donacion | donacion montoNeto ]) asFloat
 ]
 
 { #category : #initialization }
@@ -105,12 +106,6 @@ Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
 
 	^ unColeccionDeDonaciones select: [ :donacion | 
 		  donacion perteneceAlPeriodo: periodo ]
-]
-
-{ #category : #private }
-Coordinador >> sumaDeDonaciones: coleccionDeDonaciones [
-
-	^ coleccionDeDonaciones sumNumbers: [ :donacion | donacion montoNeto ]
 ]
 
 { #category : #CasosDeUso }
