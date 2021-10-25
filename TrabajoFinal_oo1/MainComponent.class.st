@@ -4,16 +4,6 @@ Class {
 	#category : #'TrabajoFinal_oo1-ui'
 }
 
-{ #category : #'as yet unclassified' }
-MainComponent >> createNewCoordinador [
-	self call: NewCoordinadorComponent new.
-]
-
-{ #category : #'as yet unclassified' }
-MainComponent >> createNewDonante [
-	self call: NewDonanteComponent new.
-]
-
 { #category : #accessing }
 MainComponent >> model [ 
 ^Grupo soleInstance 
@@ -28,13 +18,13 @@ MainComponent >> renderContentOn: aCanvas [
 ]
 
 { #category : #rendering }
-MainComponent >> renderIntegranteButtonOn: aCanvas [
+MainComponent >> renderFuncionesButtonOn: aCanvas [
 	aCanvas
 		paragraph: [ aCanvas anchor
 				callback: [  ];
-				with: [ aCanvas button with: 'CrearDonante' ]. 
+				with: [ aCanvas button with: 'Ver Organizacion' ]. 
 		 aCanvas callback: [  ];
-		with: [ aCanvas button: 'Crear Coordinador' ]].
+		with: [ aCanvas button: 'Ver Donantes' ]].
 ]
 
 { #category : #rendering }
@@ -42,4 +32,15 @@ MainComponent >> renderOrganizaciones: aCanvas [
 	aCanvas unorderedList: [ 
 		self model organizaciones do: [ :organizacion |
 			aCanvas render: (OrganizacionComponent newOrg:organizacion parent: self)]]
+]
+
+{ #category : #'as yet unclassified' }
+MainComponent >> verDonantes: organizacion [
+
+	| instance |
+	instance := OrganizacionListComponent
+		            newOrg: organizacion
+		            parent: self
+						coordi:self model coordinador. 
+	self call: instance
 ]

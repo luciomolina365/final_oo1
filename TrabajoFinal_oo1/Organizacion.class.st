@@ -37,6 +37,11 @@ Organizacion >> direccion [
 ^direccion
 ]
 
+{ #category : #accessing }
+Organizacion >> donantes [
+^donantes
+]
+
 { #category : #private }
 Organizacion >> existeDonante: unDonante [
 

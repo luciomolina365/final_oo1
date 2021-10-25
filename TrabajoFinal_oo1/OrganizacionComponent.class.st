@@ -39,7 +39,7 @@ OrganizacionComponent >> renderContentOn: aCanvas [
 		with: [ aCanvas heading
 				level: 2;
 				with: [aCanvas anchor style:'color:darkviolet';
-					callback: [ ];
+					callback: [ parent verDonantes: organizacion  ];
 				with: (organizacion nombre) ]].
 			aCanvas text: ' Denominacion '.
 			aCanvas space.
