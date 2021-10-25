@@ -13,9 +13,13 @@ Coordinador class >> agregarDonacion: unaDonacion [
 ]
 
 { #category : #'instance creation' }
-Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLegajo [ 
-^self new nombre: unNombre  dni:unDni  telefono:unTelefono  legajo:unLegajo. 
- 
+Coordinador class >> newNombre: unNombre dni: unDni telefono: unTelefono legajo: unLegajo [
+
+	^ self new
+		  nombre: unNombre
+		  dni: unDni
+		  telefono: unTelefono
+		  legajo: unLegajo
 ]
 
 { #category : #accessing }

@@ -75,7 +75,7 @@ Grupo >> altaOrganismo: unRepresentante denominacion: unaDenominacion direccion:
 { #category : #private }
 Grupo >> coordinador [
 
-	^ coordinadores detect: [ :i | i class = Coordinador  ]
+	^ coordinadores takeFirst: 1.
 ]
 
 { #category : #CasosDeUso }
