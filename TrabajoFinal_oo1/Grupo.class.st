@@ -75,7 +75,7 @@ Grupo >> donantesEnMesActualDe: unaOrganizacion [
 { #category : #private }
 Grupo >> existeIntegrante: unDonante [
 
-	^ integrantes includes: unDonante.
+	^ (integrantes includes: unDonante).
 ]
 
 { #category : #CasosDeUso }
@@ -96,6 +96,11 @@ Grupo >> initialize [
 Grupo >> integranteConNro: unNroDeDonante [
 
 	^ integrantes detect: [ :d | d tieneNro: unNroDeDonante ]
+]
+
+{ #category : #accessing }
+Grupo >> integrantes [
+^integrantes 
 ]
 
 { #category : #private }

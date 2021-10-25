@@ -16,6 +16,11 @@ instancia email: unEmail nroDonante:unNumero.
 ^instancia  
 ]
 
+{ #category : #accessing }
+Donante >> email [
+^email
+]
+
 { #category : #private }
 Donante >> email: unEmail nroDonante: unNumero [
 
@@ -26,6 +31,11 @@ Donante >> email: unEmail nroDonante: unNumero [
 { #category : #private }
 Donante >> esUnCoordinador [
 	^false
+]
+
+{ #category : #accessing }
+Donante >> nroDonante [
+^nroDonante
 ]
 
 { #category : #private }

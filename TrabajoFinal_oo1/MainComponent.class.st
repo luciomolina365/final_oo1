@@ -21,7 +21,7 @@ MainComponent >> renderContentOn: aCanvas [
 MainComponent >> renderFuncionesButtonOn: aCanvas [
 	aCanvas
 		paragraph: [ aCanvas anchor
-				callback: [  ];
+				callback: [ self renderOrganizaciones: aCanvas ];
 				with: [ aCanvas button with: 'Ver Organizacion' ]. 
 		 aCanvas callback: [  ];
 		with: [ aCanvas button: 'Ver Donantes' ]].

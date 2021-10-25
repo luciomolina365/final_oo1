@@ -48,5 +48,5 @@ TestGrupo >> testAltaDeIntegranteEnOrganizacion [
 	
 	self
 		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 1 ])
-		equals: true
+	
 ]

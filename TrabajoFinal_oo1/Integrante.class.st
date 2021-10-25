@@ -17,9 +17,24 @@ Integrante class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLe
 ]
 
 { #category : #accessing }
+Integrante >> dni [
+^dni
+]
+
+{ #category : #accessing }
 Integrante >> esUnCoordinador [
 
 	self subclassResponsibility
+]
+
+{ #category : #accessing }
+Integrante >> legajo [
+^legajo
+]
+
+{ #category : #accessing }
+Integrante >> nombre [ 
+^nombre
 ]
 
 { #category : #private }
@@ -29,4 +44,9 @@ Integrante >> nombre: unNombre dni: unDni telefono: unTelefono legajo: unLegajo 
 	dni := unDni.
 	telefono := unTelefono.
 	legajo := unLegajo
+]
+
+{ #category : #accessing }
+Integrante >> telefono [
+^telefono 
 ]

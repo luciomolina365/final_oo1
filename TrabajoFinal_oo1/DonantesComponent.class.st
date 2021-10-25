@@ -2,7 +2,7 @@ Class {
 	#name : #DonantesComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'organizacion',
+		'donante',
 		'parent'
 	],
 	#category : #'TrabajoFinal_oo1-ui'

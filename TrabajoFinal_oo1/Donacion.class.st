@@ -46,16 +46,20 @@ Donacion >> esDeAnioActual [
 	^ fecha year = Date today year
 ]
 
-{ #category : #private }
+{ #category : #accessing }
 Donacion >> fecha [
-
-	^ fecha
+^fecha
 ]
 
 { #category : #private }
 Donacion >> fecha: unaFecha [
 
 	fecha := unaFecha
+]
+
+{ #category : #accessing }
+Donacion >> mesPago [
+^mesPago 
 ]
 
 { #category : #accessing }
@@ -70,10 +74,9 @@ Donacion >> montoNeto [
 	^ monto - (tipo gastoDeComision: monto)
 ]
 
-{ #category : #private }
+{ #category : #accessing }
 Donacion >> organizacion [
-
-	^ organizacion
+^organizacion 
 ]
 
 { #category : #accessing }
