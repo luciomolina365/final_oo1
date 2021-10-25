@@ -47,6 +47,6 @@ TestGrupo >> testAltaDeIntegranteEnOrganizacion [
 	grupo1 altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
 	
 	self
-		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 1 ])
+		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 1])
 		equals: true
 ]

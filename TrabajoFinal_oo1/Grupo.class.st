@@ -32,6 +32,8 @@ Grupo >> altaDeIntegranteEnOrganizacion: unNroDonante organizacion: unaOrganizac
 
 	(self existeIntegrante: unNroDonante) ifTrue: [ 
 		unaOrganizacion agregarDonante: (self integranteConNro: unNroDonante) ]
+
+	"unaOrganizacion agregarDonante: (self integranteConNro: unNroDonante)"
 ]
 
 { #category : #CasosDeUso }
@@ -78,9 +80,9 @@ Grupo >> donantesEnMesActualDe: unaOrganizacion [
 ]
 
 { #category : #private }
-Grupo >> existeIntegrante: unDonante [
+Grupo >> existeIntegrante: unNroDeDonante [
 
-	^ integrantes includes: unDonante.
+	^ integrantes anySatisfy: [ :i | i tieneNro: unNroDeDonante ]
 ]
 
 { #category : #CasosDeUso }

@@ -24,9 +24,8 @@ Organizacion class >> newNombre: unNombre representante: unRepresentante denomin
 { #category : #CasosDeUso }
 Organizacion >> agregarDonante: unDonante [
 
-	"(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]"
+	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
 
-	donantes add: unDonante
 ]
 
 { #category : #accessing }
