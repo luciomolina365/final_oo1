@@ -2,6 +2,7 @@ Class {
 	#name : #TestGrupo,
 	#superclass : #TestCase,
 	#instVars : [
+		'coor',
 		'donacion1',
 		'donante1',
 		'tipo1',
@@ -29,33 +30,44 @@ TestGrupo >> setUp [
 		telefono: 0012334
 		email: 'lobo@ee.com'
 		legajo: '12345/6'.
+		
+	grupo1
+		altaDonante: 'Leandre Mikaliunes'
+		dni: 111111111
+		telefono: 221888666
+		email: 'lobo22@ea.com'
+		legajo: '00001/1'.
 
 	grupo1
 		altaCoordinador: 'Fernando Palacios'
 		dni: 111123
 		telefono: 00011231
 		legajo: '12345/0'.
+	coor := grupo1 coordinador.
 
 	org1 := Organizacion
 		        newNombre: 'Microsoft'
 		        representante: 'Bill Gates'
 		        denominacion: 'SAA'
 		        direccion: 'Nueva Zelanda?'.
-
-	grupo1 agregarOrganizacion: org1
+	grupo1 agregarOrganizacion: org1.
+	
+	grupo1 altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
+	
+	donante1 := grupo1 integranteConNro: 1.
 ]
 
 { #category : #tests }
 TestGrupo >> testAltaDeIntegranteEnOrganizacion [
 
 	self
-		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 1 ])
+		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 2 ])
 		equals: false.
 
-	grupo1 altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
+	grupo1 altaDeIntegranteEnOrganizacion: 2 organizacion: org1.
 
 	self
-		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 1 ])
+		assert: (org1 donantes anySatisfy: [ :d | d tieneNro: 2 ])
 		equals: true
 ]
 
@@ -78,7 +90,7 @@ TestGrupo >> testAltaDeOrganismo [
 { #category : #tests }
 TestGrupo >> testAltaDonante [
 
-	self deny: (grupo1 existeIntegrante: 2). 
+	self deny: (grupo1 existeIntegrante: 3). 
 
 	grupo1
 		altaDonante: 'Miguel Carrasco'  
@@ -86,9 +98,9 @@ TestGrupo >> testAltaDonante [
 		telefono: 00011233
 		email: 'migue_14@hotmail.com'
 		legajo: '12456/9'.
-	"En este caso, el integrante tiene un nroDeDonante asignado automaticamente. Al ser el segundo, tiene el 2"
+	"En este caso, el integrante tiene un nroDeDonante asignado automaticamente. Al ser el tercero, tiene el 3"
 	
-	self assert: (grupo1 existeIntegrante: 2).
+	self assert: (grupo1 existeIntegrante: 3).
 
 ]
 
@@ -113,23 +125,18 @@ TestGrupo >> testIngresosEntre [
 { #category : #tests }
 TestGrupo >> testPagoDonacion [
 
-	| coor donante aux |
-	coor := grupo1 coordinador.
-	donante := grupo1 integranteConNro: 1. "Coordinador no entiende este MSJ"
-	grupo1 altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
-
 	self deny:
-		((coor donacionesDeDonante: donante enOrganizacion: org1) 
+		((coor donacionesDeDonante: donante1 enOrganizacion: org1) 
 			 anySatisfy: [ :d | d donante tieneNro: 1 ]).
 
-grupo1
-        pagoDonacion: 1
-        monto: 100
-        mes: 11
-        organizacion: org1
-        tipoPago: Efectivo new.
+	grupo1
+		pagoDonacion: 1
+		monto: 100
+		mes: 11
+		organizacion: org1
+		tipoPago: Efectivo new.
 
 	self assert:
-		((coor donacionesDeDonante: donante enOrganizacion: org1) 
+		((coor donacionesDeDonante: donante1 enOrganizacion: org1) 
 			 anySatisfy: [ :d | d donante tieneNro: 1 ])
 ]
