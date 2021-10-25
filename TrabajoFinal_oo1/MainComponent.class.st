@@ -13,6 +13,7 @@ MainComponent >> model [
 MainComponent >> renderContentOn: aCanvas [
 	aCanvas heading style:' background-color: black; color:white'; with:'FINAL OO1 '.
 	aCanvas horizontalRule.
+	self renderOrganizaciones: aCanvas .
  
 	
 ]
