@@ -36,7 +36,6 @@ OrganizacionListComponent >> renderContentOn: aCanvas [
 
 { #category : #rendering }
 OrganizacionListComponent >> renderDonaciones: aCanvas [
-
 	aCanvas unorderedList: [ 
 		organizacion donantes do: [ :donante | 
 			aCanvas paragraph

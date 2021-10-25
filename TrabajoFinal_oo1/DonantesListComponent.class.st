@@ -60,8 +60,6 @@ aCanvas paragraph
 			aCanvas text: 'Donaciones '.
 			lista
 				do: [ :donacion | 
-					aCanvas text: donante email.
-			aCanvas break.
 			aCanvas text: 'fecha '.
 			aCanvas text: donacion fecha .
 			aCanvas break.
