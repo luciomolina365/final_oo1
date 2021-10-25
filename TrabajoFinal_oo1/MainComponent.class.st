@@ -13,6 +13,7 @@ MainComponent >> model [
 MainComponent >> renderContentOn: aCanvas [
 	aCanvas heading style:' background-color: black; color:white'; with:'FINAL OO1 '.
 	aCanvas horizontalRule.
+	self renderOrganizaciones: aCanvas .
  
 	
 ]
@@ -21,7 +22,7 @@ MainComponent >> renderContentOn: aCanvas [
 MainComponent >> renderFuncionesButtonOn: aCanvas [
 	aCanvas
 		paragraph: [ aCanvas anchor
-				callback: [  ];
+				callback: [ self renderOrganizaciones: aCanvas ];
 				with: [ aCanvas button with: 'Ver Organizacion' ]. 
 		 aCanvas callback: [  ];
 		with: [ aCanvas button: 'Ver Donantes' ]].

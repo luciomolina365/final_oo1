@@ -16,11 +16,21 @@ instancia email: unEmail nroDonante:unNumero.
 ^instancia  
 ]
 
+{ #category : #accessing }
+Donante >> email [
+^email
+]
+
 { #category : #private }
 Donante >> email: unEmail nroDonante: unNumero [
 
 	email := unEmail.
 	nroDonante := unNumero
+]
+
+{ #category : #accessing }
+Donante >> nroDonante [
+^nroDonante
 ]
 
 { #category : #private }

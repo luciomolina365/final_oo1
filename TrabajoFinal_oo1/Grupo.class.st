@@ -8,8 +8,16 @@ Class {
 		'organizaciones',
 		'nroSigDonante'
 	],
+	#classInstVars : [
+		'soleInstance'
+	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
+
+{ #category : #accessing }
+Grupo class >> soleInstance [
+^soleInstance ifNil:[soleInstance:=self new].
+]
 
 { #category : #private }
 Grupo >> agregarCoordinador: unCoordinador [
@@ -117,6 +125,11 @@ Grupo >> initialize [
 Grupo >> integranteConNro: unNroDeDonante [
 
 	^ integrantes detect: [ :d | d tieneNro: unNroDeDonante ]
+]
+
+{ #category : #accessing }
+Grupo >> integrantes [
+^integrantes 
 ]
 
 { #category : #private }

@@ -27,25 +27,27 @@ OrganizacionListComponent class >> newOrg: unaOrganizacion parent: aParent coord
 
 { #category : #rendering }
 OrganizacionListComponent >> renderContentOn: aCanvas [
-	aCanvas heading style:' background-color: black; color:white'; with:'CuOOra '.
+	aCanvas heading style:' background-color: black; color:white'; with:'Final oo1 '.
 	aCanvas horizontalRule.
 	aCanvas
 		form: [ aCanvas render: (OrganizacionComponent newOrg:organizacion parent:parent).
-			self renderAnswers: aCanvas ]
+			self renderDonaciones: aCanvas ]
 ]
 
 { #category : #rendering }
 OrganizacionListComponent >> renderDonaciones: aCanvas [
-	| each |
-	aCanvas
-		unorderedList: [ organizacion donantes
-				do: [ :donante | 
-					aCanvas paragraph
-						text:'Donaciones del Donante';
-						style: 'font-size: 20px';
-						with: [ aCanvas unorderedList: [ (coordi donacionesDeDonante: donante enOrganizacion: organizacion)
-				do: []]]]] 
 
-			
-			
+	aCanvas unorderedList: [ 
+		organizacion donantes do: [ :donante | 
+			aCanvas paragraph
+				text: 'Donaciones del Donante';
+				style: 'font-size: 20px';
+				form: [ 
+					aCanvas render: (DonantesListComponent
+								 newDonante: donante
+								 lista:
+									 (coordi
+										  donacionesDeDonante: donante
+										  enOrganizacion: organizacion)
+								 parent: parent) ] ] ]
 ]
