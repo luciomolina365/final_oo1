@@ -43,7 +43,7 @@ OrganizacionListComponent >> renderDonaciones: aCanvas [
 					aCanvas paragraph
 						text:'Donaciones del Donante';
 						style: 'font-size: 20px';
-						with: [ aCanvas unorderedList: [  each
+						with: [ aCanvas unorderedList: [ (coordi donacionesDeDonante: donante enOrganizacion: organizacion)
 				do: []]]]] 
 
 			

@@ -10,11 +10,6 @@ Class {
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
-{ #category : #accessing }
-Grupo class >> soleInstance [
-^soleInstance ifNil:[soleInstance:=self new].
-]
-
 { #category : #private }
 Grupo >> agregarIntegrante: unIntegrante [
 

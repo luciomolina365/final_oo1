@@ -48,7 +48,10 @@ Coordinador >> consultaDePagos: unDonante [
 { #category : #accessing }
 Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 
-	^ donaciones select: [ :d | d mismaOrganizacion: unaOrganizacion ]
+	| aux |
+	aux := donaciones select: [ :d | 
+		       d mismaOrganizacion: unaOrganizacion ].
+	^ aux select: [ :donacion | donacion perteneceA: unDonante ]
 ]
 
 { #category : #accessing }
