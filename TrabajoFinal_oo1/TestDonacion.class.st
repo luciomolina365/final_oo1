@@ -74,10 +74,10 @@ TestDonacion >> setUp [
 		            email: 'lobo22@ea.com'
 		            nroDonante: 111.
 	org3 := Organizacion
-		        newNombre: 'Microsoft'
-		        representante: 'Bill Gates'
+		        newNombre: 'IBM'
+		        representante: 'Kobe'
 		        denominacion: 'SAA'
-		        direccion: 'Nueva Zelanda?'.
+		        direccion: '122 y 51'.
 	tipo3 := PagoFacil new.
 
 	donacion3 := Donacion
@@ -115,6 +115,14 @@ TestDonacion >> testMontoNeto [
 	self assert: donacion1 montoNeto equals: 499.5. "TransferenciaBancaria 10%"
 	self assert: donacion2 montoNeto equals: 555. "Efectivo 0%"
 	self assert: donacion3 montoNeto equals: 471.75 "PagoFacil 15%"
+]
+
+{ #category : #tests }
+TestDonacion >> testPerteneceA [
+
+	self assert: (donacion1 perteneceA: donante1 ).
+	self deny: (donacion1 perteneceA: donante2 ).
+	
 ]
 
 { #category : #tests }

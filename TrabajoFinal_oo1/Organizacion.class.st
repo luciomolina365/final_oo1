@@ -28,6 +28,12 @@ Organizacion >> agregarDonante: unDonante [
 ]
 
 { #category : #private }
+Organizacion >> donantes [
+
+	^ donantes
+]
+
+{ #category : #private }
 Organizacion >> existeDonante: unDonante [
 
 	^ donantes includes: unDonante.
