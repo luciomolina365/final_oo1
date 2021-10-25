@@ -71,7 +71,7 @@ Grupo >> donacionesEnMesActualDe: unaOrganizacion [
 ]
 
 { #category : #accessing }
-Grupo >> donantesOrganizacion: unaOrganizacion [
+Grupo >> donantesEnMesActualDe: unaOrganizacion [
 
 	^ ((self donacionesEnMesActualDe: unaOrganizacion) 
 	collect: [:donacion | donacion donante ]) asSet
