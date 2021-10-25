@@ -95,7 +95,7 @@ Grupo >> altaOrganismo: unRepresentante denominacion: unaDenominacion direccion:
 { #category : #private }
 Grupo >> coordinador [
 
-	^ coordinadores takeFirst: 1.
+	^ coordinadores first
 ]
 
 { #category : #CasosDeUso }

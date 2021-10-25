@@ -129,6 +129,8 @@ TestGrupo >> testPagoDonacion [
 		organizacion: org1
 		tipoPago: Efectivo new.
 
-	aux := coor donacionesDeDonante: donante enOrganizacion: org1.
-	self assert: false
+	self assert:
+		((coor donacionesDeDonante: donante enOrganizacion: org1) 
+			 anySatisfy: [ :d | d donante tieneNro: 1 ]).
+	
 ]
