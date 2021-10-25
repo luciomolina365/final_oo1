@@ -12,7 +12,9 @@ Class {
 		'donacion2',
 		'donacion3',
 		'donacion4',
-		'aux'
+		'aux',
+		'aux2',
+		'aux3'
 	],
 	#category : #'TrabajoFinal_oo1-Tests'
 }
@@ -95,11 +97,18 @@ TestCoordinador >> setUp [
 		             mesPago: 11
 		             untipo: PagoFacil new
 		             organizacion: org2.
-	coor agregarDonacion: donacion3.
+	coor agregarDonacion: donacion4.
 
 	aux := OrderedCollection new.
 	aux add: donacion1.
-	aux add: donacion2
+	aux add: donacion2.
+	aux2 := OrderedCollection new.
+	aux2 add: donacion1.
+	aux2 add: donacion3.
+	aux3 := OrderedCollection new.
+	aux3 add: donacion2.
+	aux3 add: donacion4.
+	
 ]
 
 { #category : #tests }
@@ -119,13 +128,23 @@ TestCoordinador >> testConsultaDePagos [
 { #category : #tests }
 TestCoordinador >> testIngresosOrganizacionEnMesActual [
 
-	self
-		assert: (coor ingresosOrganizacionEnMesActual: org1)
-		equals: 2800.
+	self assert: (coor ingresosOrganizacionEnMesActual: org1) equals: 950.
 
 	donacion1 fecha: (Date year: 2021 month: 9 day: 30). "Cambiamos la fecha de una de las donaciones"
 
-	self 
-		deny: (coor ingresosOrganizacionEnMesActual: org1) 
-		equals: 2800
+	self deny: (coor ingresosOrganizacionEnMesActual: org1) equals: 950.
+]
+
+{ #category : #tests }
+TestCoordinador >> testTodasLasDonacionesEnMesActualDe [
+
+	self
+		assert: (coor todasLasDonacionesEnMesActualDe: org1)
+		equals: aux2 asOrderedCollection.
+
+	self
+		assert: (coor todasLasDonacionesEnMesActualDe: org2)
+		equals: aux3 asOrderedCollection
+		
+	
 ]
