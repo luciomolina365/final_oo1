@@ -153,15 +153,13 @@ Grupo >> organizaciones [
 { #category : #CasosDeUso }
 Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion tipoPago: unTipoPago [
 
-	| coor |
 	(unaOrganizacion verificacionDonante: unNroDonante) ifFalse: [ 
 		^ false ].
-
-	coor := self coordinador.
-	coor
+	
+	self
 		agregarDonacion: (self integranteConNro: unNroDonante)
 		mes: unMes
 		forma: unTipoPago
-		organizacion: self
+		organizacion: unaOrganizacion 
 		monto: unMonto
 ]

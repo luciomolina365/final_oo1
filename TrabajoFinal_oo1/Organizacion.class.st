@@ -45,9 +45,9 @@ Organizacion >> donantes [
 ]
 
 { #category : #private }
-Organizacion >> existeDonante: unDonante [
-
-	^ donantes includes: unDonante.
+Organizacion >> existeDonante: unNroDeDonante [
+	
+	^ donantes anySatisfy: [ :i | i tieneNro: unNroDeDonante ]
 ]
 
 { #category : #initialization }

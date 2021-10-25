@@ -56,7 +56,7 @@ Coordinador >> donaciones [
 Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 
 
-	^ donaciones select: [ :d | d esDeOrganizacion: unaOrganizacion & (d perteneceA: unDonante) ]
+	^ donaciones select: [ :d | ((d esDeOrganizacion: unaOrganizacion) & (d perteneceA: unDonante)) ]
 
 
 	"	| aux |
