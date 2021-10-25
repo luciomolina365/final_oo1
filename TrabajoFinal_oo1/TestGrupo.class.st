@@ -5,16 +5,7 @@ Class {
 		'coor',
 		'donacion1',
 		'donante1',
-		'tipo1',
 		'org1',
-		'donacion2',
-		'donante2',
-		'tipo2',
-		'org2',
-		'donacion3',
-		'donante3',
-		'tipo3',
-		'org3',
 		'grupo1'
 	],
 	#category : #'TrabajoFinal_oo1-Tests'
@@ -102,15 +93,6 @@ TestGrupo >> testAltaDonante [
 	
 	self assert: (grupo1 existeIntegrante: 3).
 
-]
-
-{ #category : #tests }
-TestGrupo >> testDonacionesEnMesActualDe [
-
-	self assert: false equals: true
-	
-	
-	"asdasdasdasd"
 ]
 
 { #category : #tests }

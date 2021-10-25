@@ -25,7 +25,7 @@ Grupo >> agregarCoordinador: unCoordinador [
 	coordinadores add: unCoordinador
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 Grupo >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto: unMonto [
 
 	coordinadores do: [ :coordi | 
@@ -99,16 +99,10 @@ Grupo >> coordinador [
 ]
 
 { #category : #CasosDeUso }
-Grupo >> donacionesEnMesActualDe: unaOrganizacion [
-
-	^ self coordinador todasLasDonacionesEnMesActualDe: unaOrganizacion
-]
-
-{ #category : #accessing }
 Grupo >> donantesEnMesActualDe: unaOrganizacion [
 
-	^ ((self donacionesEnMesActualDe: unaOrganizacion) 
-	collect: [:donacion | donacion donante ]) asSet
+	^ ((self coordinador todasLasDonacionesEnMesActualDe: unaOrganizacion) 
+		   collect: [ :donacion | donacion donante ]) asSet
 ]
 
 { #category : #private }
@@ -141,7 +135,8 @@ Grupo >> integranteConNro: unNroDeDonante [
 
 { #category : #accessing }
 Grupo >> integrantes [
-^integrantes 
+
+	^ integrantes
 ]
 
 { #category : #private }
