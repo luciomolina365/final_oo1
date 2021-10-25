@@ -67,7 +67,7 @@ TestCoordinador >> setUp [
 
 	donacion1 := Donacion
 		             newDonante: donante3
-		             monto: 1000
+		             monto: 500
 		             mesPago: 11
 		             untipo: Efectivo new
 		             organizacion: org1.
@@ -83,12 +83,12 @@ TestCoordinador >> setUp [
 
 	donacion3 := Donacion
 		             newDonante: donante1
-		             monto: 1000
+		             monto: 500
 		             mesPago: 11
-		             untipo: PagoFacil new
+		             untipo: TransferenciaBancaria new
 		             organizacion: org1.
 	coor agregarDonacion: donacion3.
-	
+
 	donacion4 := Donacion
 		             newDonante: donante2
 		             monto: 1000
@@ -96,10 +96,10 @@ TestCoordinador >> setUp [
 		             untipo: PagoFacil new
 		             organizacion: org2.
 	coor agregarDonacion: donacion3.
-	
+
 	aux := OrderedCollection new.
 	aux add: donacion1.
-	aux add: donacion2.
+	aux add: donacion2
 ]
 
 { #category : #tests }
@@ -119,4 +119,13 @@ TestCoordinador >> testConsultaDePagos [
 { #category : #tests }
 TestCoordinador >> testIngresosOrganizacionEnMesActual [
 
+	self
+		assert: (coor ingresosOrganizacionEnMesActual: org1)
+		equals: 2800.
+
+	donacion1 fecha: (Date year: 2021 month: 9 day: 30). "Cambiamos la fecha de una de las donaciones"
+
+	self 
+		deny: (coor ingresosOrganizacionEnMesActual: org1) 
+		equals: 2800
 ]

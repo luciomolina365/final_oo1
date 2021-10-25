@@ -36,7 +36,8 @@ Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacio
 { #category : #accessing }
 Coordinador >> calcularIngresosEntre: fecha1 y: fecha2 [
 
-	^ self sumaDeDonaciones: (self donacionesEntre: fecha1 y: fecha2)
+	^ (self donacionesEntre: fecha1 y: fecha2) sumNumbers: [ :d | 
+		  d montoNeto ]
 ]
 
 { #category : #CasosDeUso }
@@ -97,7 +98,7 @@ Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
 
 	inicioMes := Date
 		             year: fechaActual year
-		             month: fechaActual month
+		             month: fechaActual monthIndex 
 		             day: 1.
 
 	periodo := DateLapse
