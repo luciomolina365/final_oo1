@@ -28,11 +28,6 @@ Donante >> email: unEmail nroDonante: unNumero [
 	nroDonante := unNumero
 ]
 
-{ #category : #private }
-Donante >> esUnCoordinador [
-	^false
-]
-
 { #category : #accessing }
 Donante >> nroDonante [
 ^nroDonante

@@ -4,9 +4,6 @@ Class {
 	#classVars : [
 		'donaciones'
 	],
-	#classInstVars : [
-		'donaciones'
-	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
@@ -17,14 +14,14 @@ Coordinador class >> agregarDonacion: unaDonacion [
 
 { #category : #'instance creation' }
 Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLegajo [ 
-^self newNombre: unNombre  dni:unDni  telefono:unTelefono  legajo:unLegajo. 
+^self new nombre: unNombre  dni:unDni  telefono:unTelefono  legajo:unLegajo. 
  
 ]
 
 { #category : #accessing }
-Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto:unMonto [
+Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto: unMonto [
 
-	donaciones agregarDonacion: (Donacion
+	self agregarDonacion: (Donacion
 			 newDonante: unDonante
 			 monto: unMonto
 			 mesPago: unMes
@@ -45,13 +42,24 @@ Coordinador >> consultaDePagos: unDonante [
 		  (d perteneceA: unDonante) & d esDeAnioActual ]
 ]
 
+{ #category : #private }
+Coordinador >> donaciones [
+
+	^ donaciones
+]
+
 { #category : #accessing }
 Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 
-	| aux |
+
+	^ donaciones select: [ :d | d esDeOrganizacion: unaOrganizacion & (d perteneceA: unDonante) ]
+
+
+	"	| aux |
 	aux := donaciones select: [ :d | 
-		       d mismaOrganizacion: unaOrganizacion ].
-	^ aux select: [ :donacion | donacion perteneceA: unDonante ]
+		       (d mismaOrganizacion: unaOrganizacion)].
+	
+	^ aux select: [ :donacion | donacion perteneceA: unDonante ]"
 ]
 
 { #category : #accessing }
@@ -64,15 +72,16 @@ Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 		  periodo includesDate: donacion fecha ]
 ]
 
-{ #category : #accessing }
-Coordinador >> esUnCoordinador [
-	^true
-]
-
 { #category : #CasosDeUso }
 Coordinador >> ingresosOrganizacionEnMesActual: unaOrganizacion [
 
 	self sumaDeDonaciones: (self todasLasDonacionesEnMesActualDe: unaOrganizacion)
+]
+
+{ #category : #initialization }
+Coordinador >> initialize [
+
+	donaciones := OrderedCollection new
 ]
 
 { #category : #private }
@@ -105,5 +114,5 @@ Coordinador >> todasLasDonacionesEnMesActualDe: unaOrganizacion [
 
 	^ self pertenecenAlMesActual:
 		  (donaciones select: [ :each | 
-			   each mismaOrganizacion: unaOrganizacion ])
+			   each esDeOrganizacion: unaOrganizacion ])
 ]

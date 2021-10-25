@@ -4,11 +4,18 @@ Class {
 	#instVars : [
 		'pozoComun',
 		'integrantes',
+		'coordinadores',
 		'organizaciones',
 		'nroSigDonante'
 	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
+
+{ #category : #private }
+Grupo >> agregarCoordinador: unCoordinador [
+
+	coordinadores add: unCoordinador
+]
 
 { #category : #private }
 Grupo >> agregarIntegrante: unIntegrante [
@@ -22,21 +29,23 @@ Grupo >> agregarOrganizacion: unaOrganizacion [
 	organizaciones add: unaOrganizacion
 ]
 
+{ #category : #accessing }
+Grupo >> altaCoordinador: unNombre dni: unDni telefono: unTelefono legajo: unLegajo [
+
+	self agregarCoordinador: (Coordinador
+			 newNombre: unNombre
+			 dni: unDni
+			 telefono: unTelefono
+			 legajo: unLegajo)
+]
+
 { #category : #CasosDeUso }
 Grupo >> altaDeIntegranteEnOrganizacion: unNroDonante organizacion: unaOrganizacion [
 
 	(self existeIntegrante: unNroDonante) ifTrue: [ 
 		unaOrganizacion agregarDonante: (self integranteConNro: unNroDonante) ]
-]
 
-{ #category : #CasosDeUso }
-Grupo >> altaDeOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion nombre:unNombre [
 
-	self agregarOrganizacion: (Organizacion
-			 newNombre:unNombre
-			 representante: unRepresentante
-			 denominacion: unaDenominacion
-			 direccion: unaDireccion)
 ]
 
 { #category : #CasosDeUso }
@@ -53,10 +62,20 @@ Grupo >> altaDonante: unNombre dni: unDni telefono: unTelefono email: unEmail le
 			 nroDonante: nroSigDonante)
 ]
 
+{ #category : #CasosDeUso }
+Grupo >> altaOrganismo: unRepresentante denominacion: unaDenominacion direccion: unaDireccion nombre:unNombre [
+
+	self agregarOrganizacion: (Organizacion
+			 newNombre:unNombre
+			 representante: unRepresentante
+			 denominacion: unaDenominacion
+			 direccion: unaDireccion)
+]
+
 { #category : #private }
 Grupo >> coordinador [
 
-	^ integrantes detect: [ :i | i esUnCoordinador ]
+	^ coordinadores detect: [ :i | i class = Coordinador  ]
 ]
 
 { #category : #CasosDeUso }
@@ -73,9 +92,9 @@ Grupo >> donantesEnMesActualDe: unaOrganizacion [
 ]
 
 { #category : #private }
-Grupo >> existeIntegrante: unDonante [
+Grupo >> existeIntegrante: unNroDeDonante [
 
-	^ (integrantes includes: unDonante).
+	^ integrantes anySatisfy: [ :i | i tieneNro: unNroDeDonante ]
 ]
 
 { #category : #CasosDeUso }
@@ -89,7 +108,9 @@ Grupo >> initialize [
 
 	nroSigDonante := 0.
 	organizaciones := OrderedCollection new.
-	integrantes := OrderedCollection new
+	integrantes := OrderedCollection new.
+	coordinadores := OrderedCollection new
+	
 ]
 
 { #category : #private }

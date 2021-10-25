@@ -47,6 +47,12 @@ Donacion >> esDeAnioActual [
 ]
 
 { #category : #accessing }
+Donacion >> esDeOrganizacion: unaOrganizacion [
+
+	^ organizacion == unaOrganizacion
+]
+
+{ #category : #accessing }
 Donacion >> fecha [
 ^fecha
 ]
@@ -60,12 +66,6 @@ Donacion >> fecha: unaFecha [
 { #category : #accessing }
 Donacion >> mesPago [
 ^mesPago 
-]
-
-{ #category : #accessing }
-Donacion >> mismaOrganizacion: unaOrganizacion [
-
-	^ organizacion == unaOrganizacion
 ]
 
 { #category : #accessing }

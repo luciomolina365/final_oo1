@@ -22,12 +22,6 @@ Integrante >> dni [
 ]
 
 { #category : #accessing }
-Integrante >> esUnCoordinador [
-
-	self subclassResponsibility
-]
-
-{ #category : #accessing }
 Integrante >> legajo [
 ^legajo
 ]
