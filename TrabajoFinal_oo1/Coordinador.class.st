@@ -46,6 +46,12 @@ Coordinador >> consultaDePagos: unDonante [
 ]
 
 { #category : #accessing }
+Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
+
+	^ donaciones select: [ :d | d mismaOrganizacion: unaOrganizacion ]
+]
+
+{ #category : #accessing }
 Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 
 	| periodo |
@@ -60,10 +66,10 @@ Coordinador >> esUnCoordinador [
 	^true
 ]
 
-{ #category : #accessing }
-Coordinador >> ingresosOrganizacion: unaOrganizacion [
+{ #category : #CasosDeUso }
+Coordinador >> ingresosOrganizacionEnMesActual: unaOrganizacion [
 
-	self sumaDeDonaciones: (self todasLasDonacionesDe: unaOrganizacion)
+	self sumaDeDonaciones: (self todasLasDonacionesEnMesActualDe: unaOrganizacion)
 ]
 
 { #category : #private }
@@ -91,8 +97,8 @@ Coordinador >> sumaDeDonaciones: coleccionDeDonaciones [
 	^ coleccionDeDonaciones sumNumbers: [ :donacion | donacion montoNeto ]
 ]
 
-{ #category : #accessing }
-Coordinador >> todasLasDonacionesDe: unaOrganizacion [
+{ #category : #CasosDeUso }
+Coordinador >> todasLasDonacionesEnMesActualDe: unaOrganizacion [
 
 	^ self pertenecenAlMesActual:
 		  (donaciones select: [ :each | 

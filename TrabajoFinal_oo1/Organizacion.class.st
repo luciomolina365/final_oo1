@@ -37,9 +37,10 @@ Organizacion >> direccion [
 ^direccion
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 Organizacion >> donantes [
-^donantes
+
+	^ donantes
 ]
 
 { #category : #private }

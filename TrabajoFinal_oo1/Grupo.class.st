@@ -64,16 +64,16 @@ Grupo >> coordinador [
 	^ integrantes detect: [ :i | i esUnCoordinador ]
 ]
 
-{ #category : #accessing }
-Grupo >> donacionesOrganizacion: unaOrganizacion [
+{ #category : #CasosDeUso }
+Grupo >> donacionesEnMesActualDe: unaOrganizacion [
 
-	^ self coordinador todasLasDonacionesDe: unaOrganizacion
+	^ self coordinador todasLasDonacionesEnMesActualDe: unaOrganizacion
 ]
 
 { #category : #accessing }
-Grupo >> donantesOrganizacion: unaOrganizacion [
+Grupo >> donantesEnMesActualDe: unaOrganizacion [
 
-	^ ((self donacionesOrganizacion: unaOrganizacion) 
+	^ ((self donacionesEnMesActualDe: unaOrganizacion) 
 	collect: [:donacion | donacion donante ]) asSet
 ]
 
