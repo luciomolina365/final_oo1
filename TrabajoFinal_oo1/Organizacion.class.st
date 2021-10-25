@@ -27,6 +27,16 @@ Organizacion >> agregarDonante: unDonante [
 	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
 ]
 
+{ #category : #accessing }
+Organizacion >> denominacion [
+^denominacion 
+]
+
+{ #category : #accessing }
+Organizacion >> direccion [
+^direccion
+]
+
 { #category : #private }
 Organizacion >> donantes [
 
@@ -57,6 +67,11 @@ Organizacion >> nombre:unNombre representante: unRepresentante denominacion: una
 	denominacion := unaDenominacion.
 	direccion := unaDireccion.
 	nombre:= unNombre
+]
+
+{ #category : #accessing }
+Organizacion >> representanteLegal [
+^representanteLegal
 ]
 
 { #category : #accessing }

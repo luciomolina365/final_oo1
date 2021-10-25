@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+MainComponent >> createNewCoordinador [
+	self call: NewCoordinadorComponent new.
+]
+
+{ #category : #'as yet unclassified' }
 MainComponent >> createNewDonante [
 	self call: NewDonanteComponent new.
 ]
