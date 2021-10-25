@@ -56,15 +56,8 @@ Coordinador >> donaciones [
 { #category : #accessing }
 Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 
-
-	^ donaciones select: [ :d | ((d esDeOrganizacion: unaOrganizacion) & (d perteneceA: unDonante)) ]
-
-
-	"	| aux |
-	aux := donaciones select: [ :d | 
-		       (d mismaOrganizacion: unaOrganizacion)].
-	
-	^ aux select: [ :donacion | donacion perteneceA: unDonante ]"
+	^ donaciones select: [ :d | 
+		  (d esDeOrganizacion: unaOrganizacion) & (d perteneceA: unDonante) ]
 ]
 
 { #category : #accessing }
