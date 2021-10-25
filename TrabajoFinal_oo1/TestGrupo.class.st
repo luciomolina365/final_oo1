@@ -41,7 +41,7 @@ TestGrupo >> setUp [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 TestGrupo >> testAltaDeIntegranteEnOrganizacion [
 
 	grupo1 altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
