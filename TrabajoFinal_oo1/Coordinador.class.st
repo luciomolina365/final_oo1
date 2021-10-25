@@ -63,11 +63,9 @@ Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 { #category : #accessing }
 Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 
-	| periodo |
-	periodo := DateLapse newFechaIni: fecha1 fechaFin: fecha2.
-
 	^ donaciones select: [ :donacion | 
-		  periodo includesDate: donacion fecha ]
+		  donacion pertenceAlPeriodo:
+			  (DateLapse newFechaIni: fecha1 fechaFin: fecha2) ]
 ]
 
 { #category : #CasosDeUso }
@@ -83,29 +81,11 @@ Coordinador >> initialize [
  donaciones := OrderedCollection new.
 ]
 
-{ #category : #private }
-Coordinador >> pertenecenAlMesActual: unColeccionDeDonaciones [
-
-	| inicioMes periodo fechaActual |
-	fechaActual := Date today.
-
-	inicioMes := Date
-		             year: fechaActual year
-		             month: fechaActual monthIndex 
-		             day: 1.
-
-	periodo := DateLapse
-		           newFechaInicial: inicioMes
-		           fechaFinal: fechaActual.
-
-	^ unColeccionDeDonaciones select: [ :donacion | 
-		  donacion perteneceAlPeriodo: periodo ]
-]
-
 { #category : #CasosDeUso }
 Coordinador >> todasLasDonacionesEnMesActualDe: unaOrganizacion [
 
-	^ self pertenecenAlMesActual:
-		  (donaciones select: [ :each | 
-			   each esDeOrganizacion: unaOrganizacion ])
+
+	^ (donaciones select: [ :each | 
+		   each esDeOrganizacion: unaOrganizacion ]) select: [ :d | 
+		  d perteneceAlPeriodo: (DateLapse newPeriodoDeMesActual ) ]
 ]

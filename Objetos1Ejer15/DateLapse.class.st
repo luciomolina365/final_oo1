@@ -27,6 +27,12 @@ DateLapse class >> newFechaInicial: unaFechaI fechaFinal: unaFechaF [
 ]
 
 { #category : #accesing }
+DateLapse class >> newPeriodoDeMesActual [
+
+	^ self new periodoDeMesActual
+]
+
+{ #category : #accesing }
 DateLapse >> from [
 ^from
 ]
@@ -49,6 +55,14 @@ to :=Date fromString: unaFechaF.
 DateLapse >> newFechaInicial: unaFechaI fechaFinal:unaFechaF [.
 from :=unaFechaI.
 to :=unaFechaF.
+]
+
+{ #category : #accesing }
+DateLapse >> periodoDeMesActual [
+
+	to := Date today.
+
+	from := Date year: to year month: to monthIndex day: 1
 ]
 
 { #category : #accesing }

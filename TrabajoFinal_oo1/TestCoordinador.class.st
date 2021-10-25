@@ -14,7 +14,8 @@ Class {
 		'donacion4',
 		'aux',
 		'aux2',
-		'aux3'
+		'aux3',
+		'fecha1'
 	],
 	#category : #'TrabajoFinal_oo1-Tests'
 }
@@ -109,6 +110,8 @@ TestCoordinador >> setUp [
 	aux3 add: donacion2.
 	aux3 add: donacion4.
 	
+	fecha1 := Date year:  2020 month: 1 day: 1.
+
 ]
 
 { #category : #tests }
@@ -123,6 +126,12 @@ TestCoordinador >> testConsultaDePagos [
 		deny: (coor consultaDePagos: donante1)
 		equals: aux asOrderedCollection.
 
+]
+
+{ #category : #tests }
+TestCoordinador >> testDonacionesEntre [
+
+	self assert: false
 ]
 
 { #category : #tests }
