@@ -129,6 +129,6 @@ TestGrupo >> testPagoDonacion [
 		organizacion: org1
 		tipoPago: Efectivo new.
 
-	aux := (coor donacionesDeDonante: donante enOrganizacion: org1).
+	aux := coor donacionesDeDonante: donante enOrganizacion: org1.
 	self assert: false
 ]

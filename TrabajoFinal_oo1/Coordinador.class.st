@@ -4,9 +4,6 @@ Class {
 	#classVars : [
 		'donaciones'
 	],
-	#classInstVars : [
-		'donaciones'
-	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
@@ -22,9 +19,9 @@ Coordinador class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unL
 ]
 
 { #category : #accessing }
-Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto:unMonto [
+Coordinador >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto: unMonto [
 
-	donaciones agregarDonacion: (Donacion
+	self agregarDonacion: (Donacion
 			 newDonante: unDonante
 			 monto: unMonto
 			 mesPago: unMes
@@ -54,8 +51,8 @@ Coordinador >> donaciones [
 { #category : #accessing }
 Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 
-	^ donaciones select: [ :d | 
-		  d esDeOrganizacion: unaOrganizacion "& (d perteneceA: unDonante)" ]
+
+	^ donaciones select: [ :d | d esDeOrganizacion: unaOrganizacion & (d perteneceA: unDonante) ]
 
 
 	"	| aux |

@@ -102,7 +102,7 @@ TestDonacion >> testEsDeAnioActual [
 ]
 
 { #category : #tests }
-TestDonacion >> testMismaOrganizacion [
+TestDonacion >> testEsDeOrganizacion [
 
 	self assert: (donacion1 esDeOrganizacion: org1) equals: true.
 	self deny: (donacion1 esDeOrganizacion: org2) equals: true.
