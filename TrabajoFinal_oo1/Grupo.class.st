@@ -25,6 +25,18 @@ Grupo >> agregarCoordinador: unCoordinador [
 	coordinadores add: unCoordinador
 ]
 
+{ #category : #accessing }
+Grupo >> agregarDonacion: unDonante mes: unMes forma: unaForma organizacion: unaOrganizacion monto: unMonto [
+
+	coordinadores do: [ :coordi | 
+		coordi
+			agregarDonacion: unDonante
+			mes: unMes
+			forma: unaForma
+			organizacion: unaOrganizacion
+			monto: unMonto ]
+]
+
 { #category : #private }
 Grupo >> agregarIntegrante: unIntegrante [
 

@@ -1,16 +1,11 @@
 Class {
 	#name : #Coordinador,
 	#superclass : #Integrante,
-	#classVars : [
+	#instVars : [
 		'donaciones'
 	],
 	#category : #'TrabajoFinal_oo1-Model'
 }
-
-{ #category : #accessing }
-Coordinador class >> agregarDonacion: unaDonacion [
-	donaciones add: unaDonacion .
-]
 
 { #category : #'instance creation' }
 Coordinador class >> newNombre: unNombre dni: unDni telefono: unTelefono legajo: unLegajo [
@@ -20,6 +15,11 @@ Coordinador class >> newNombre: unNombre dni: unDni telefono: unTelefono legajo:
 		  dni: unDni
 		  telefono: unTelefono
 		  legajo: unLegajo
+]
+
+{ #category : #accessing }
+Coordinador >> agregarDonacion: unaDonacion [
+	donaciones add: unaDonacion .
 ]
 
 { #category : #accessing }
@@ -85,7 +85,7 @@ Coordinador >> ingresosOrganizacionEnMesActual: unaOrganizacion [
 { #category : #initialization }
 Coordinador >> initialize [
 
-	donaciones := OrderedCollection new
+ donaciones := OrderedCollection new.
 ]
 
 { #category : #private }
