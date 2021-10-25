@@ -123,14 +123,13 @@ TestGrupo >> testPagoDonacion [
 			 anySatisfy: [ :d | d donante tieneNro: 1 ]).
 
 	grupo1
-		pagoDonacion: 1
-		monto: 100
-		mes: 11
+		agregarDonacion: donante
+		mes: '5'
+		forma: Efectivo new
 		organizacion: org1
-		tipoPago: Efectivo new.
+		monto: 123.
 
 	self assert:
 		((coor donacionesDeDonante: donante enOrganizacion: org1) 
-			 anySatisfy: [ :d | d donante tieneNro: 1 ]).
-	
+			 anySatisfy: [ :d | d donante tieneNro: 1 ])
 ]
