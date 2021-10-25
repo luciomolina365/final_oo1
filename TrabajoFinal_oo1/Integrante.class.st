@@ -16,12 +16,6 @@ Integrante class >> newNombre:unNombre dni:unDni telefono:unTelefono legajo:unLe
  
 ]
 
-{ #category : #accessing }
-Integrante >> esUnCoordinador [
-
-	self subclassResponsibility
-]
-
 { #category : #private }
 Integrante >> nombre: unNombre dni: unDni telefono: unTelefono legajo: unLegajo [
 

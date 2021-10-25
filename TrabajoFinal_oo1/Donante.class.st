@@ -24,11 +24,6 @@ Donante >> email: unEmail nroDonante: unNumero [
 ]
 
 { #category : #private }
-Donante >> esUnCoordinador [
-	^false
-]
-
-{ #category : #private }
 Donante >> tieneNro: unNroDeDonante [
 
 	^ nroDonante == unNroDeDonante

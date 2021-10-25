@@ -46,6 +46,12 @@ Donacion >> esDeAnioActual [
 	^ fecha year = Date today year
 ]
 
+{ #category : #accessing }
+Donacion >> esDeOrganizacion: unaOrganizacion [
+
+	^ organizacion == unaOrganizacion
+]
+
 { #category : #private }
 Donacion >> fecha [
 
@@ -56,12 +62,6 @@ Donacion >> fecha [
 Donacion >> fecha: unaFecha [
 
 	fecha := unaFecha
-]
-
-{ #category : #accessing }
-Donacion >> mismaOrganizacion: unaOrganizacion [
-
-	^ organizacion == unaOrganizacion
 ]
 
 { #category : #accessing }
