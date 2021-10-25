@@ -148,7 +148,7 @@ Grupo >> organizaciones [
 { #category : #CasosDeUso }
 Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion tipoPago: unTipoPago [
 
-	(unaOrganizacion verificacionDonante: unNroDonante) ifFalse: [ 
+	(unaOrganizacion existeNroDeDonante: unNroDonante) ifFalse: [ 
 		^ false ].
 	
 	self

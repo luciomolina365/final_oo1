@@ -24,8 +24,8 @@ Organizacion class >> newNombre: unNombre representante: unRepresentante denomin
 { #category : #CasosDeUso }
 Organizacion >> agregarDonante: unDonante [
 
-	(self existeDonante: unDonante) ifFalse: [ donantes add: unDonante ]
-
+	(self existeNroDeDonante: unDonante nroDonante) ifFalse: [ 
+		donantes add: unDonante ]
 ]
 
 { #category : #accessing }
@@ -38,14 +38,14 @@ Organizacion >> direccion [
 ^direccion
 ]
 
-{ #category : #private }
+{ #category : #accessing }
 Organizacion >> donantes [
 
 	^ donantes
 ]
 
-{ #category : #private }
-Organizacion >> existeDonante: unNroDeDonante [
+{ #category : #accessing }
+Organizacion >> existeNroDeDonante: unNroDeDonante [
 	
 	^ donantes anySatisfy: [ :i | i tieneNro: unNroDeDonante ]
 ]
@@ -73,11 +73,4 @@ Organizacion >> nombre:unNombre representante: unRepresentante denominacion: una
 { #category : #accessing }
 Organizacion >> representanteLegal [
 ^representanteLegal
-]
-
-{ #category : #accessing }
-Organizacion >> verificacionDonante: nroDonante [ 
-
-	(self existeDonante: nroDonante) ifTrue: [ ^ true ].
-	^ false
 ]

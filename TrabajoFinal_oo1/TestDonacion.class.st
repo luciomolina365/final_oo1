@@ -72,7 +72,7 @@ TestDonacion >> setUp [
 		            telefono: 001232323
 		            legajo: '00001/2'
 		            email: 'lobo22@ea.com'
-		            nroDonante: 111.
+		            nroDonante: 444.
 	org3 := Organizacion
 		        newNombre: 'IBM'
 		        representante: 'Kobe'

@@ -33,7 +33,7 @@ Donante >> nroDonante [
 ^nroDonante
 ]
 
-{ #category : #private }
+{ #category : #accessing }
 Donante >> tieneNro: unNroDeDonante [
 
 	^ nroDonante == unNroDeDonante
