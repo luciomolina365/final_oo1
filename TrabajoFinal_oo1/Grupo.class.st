@@ -145,7 +145,7 @@ Grupo >> organizaciones [
 	^ organizaciones
 ]
 
-{ #category : #CasosDeUso }
+{ #category : #private }
 Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion tipoPago: unTipoPago [
 
 	(unaOrganizacion existeNroDeDonante: unNroDonante) ifFalse: [ 
@@ -157,4 +157,37 @@ Grupo >> pagoDonacion: unNroDonante monto: unMonto mes: unMes organizacion: unaO
 		forma: unTipoPago
 		organizacion: unaOrganizacion 
 		monto: unMonto
+]
+
+{ #category : #CasosDeUso }
+Grupo >> pagoDonacionEfectivo: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion [
+
+	self
+		pagoDonacion: unNroDonante
+		monto: unMonto
+		mes: unMes
+		organizacion: unaOrganizacion
+		tipoPago: Efectivo new
+]
+
+{ #category : #CasosDeUso }
+Grupo >> pagoDonacionPagoFacil: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion [
+
+	self
+		pagoDonacion: unNroDonante
+		monto: unMonto
+		mes: unMes
+		organizacion: unaOrganizacion
+		tipoPago: PagoFacil new
+]
+
+{ #category : #CasosDeUso }
+Grupo >> pagoDonacionTransferenciaBancaria: unNroDonante monto: unMonto mes: unMes organizacion: unaOrganizacion [
+
+	self
+		pagoDonacion: unNroDonante
+		monto: unMonto
+		mes: unMes
+		organizacion: unaOrganizacion
+		tipoPago: TransferenciaBancaria new
 ]
