@@ -64,8 +64,8 @@ Coordinador >> donacionesDeDonante: unDonante enOrganizacion: unaOrganizacion [
 Coordinador >> donacionesEntre: fecha1 y: fecha2 [
 
 	^ donaciones select: [ :donacion | 
-		  donacion pertenceAlPeriodo:
-			  (DateLapse newFechaIni: fecha1 fechaFin: fecha2) ]
+		  donacion perteneceAlPeriodo:
+			  (DateLapse newFechaInicial: fecha1 fechaFinal: fecha2) ]
 ]
 
 { #category : #CasosDeUso }

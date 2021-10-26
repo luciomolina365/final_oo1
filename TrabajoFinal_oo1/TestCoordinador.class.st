@@ -15,7 +15,10 @@ Class {
 		'aux',
 		'aux2',
 		'aux3',
-		'fecha1'
+		'fecha1',
+		'fecha2',
+		'aux4',
+		'aux5'
 	],
 	#category : #'TrabajoFinal_oo1-Tests'
 }
@@ -109,9 +112,20 @@ TestCoordinador >> setUp [
 	aux3 := OrderedCollection new.
 	aux3 add: donacion2.
 	aux3 add: donacion4.
-	
-	fecha1 := Date year:  2020 month: 1 day: 1.
 
+	fecha1 := Date year: 2020 month: 1 day: 1.
+	fecha2 := Date year: 2022 month: 1 day: 1.
+
+	aux4 := OrderedCollection new.
+	aux4 add: donacion1.
+	aux4 add: donacion2.
+	aux4 add: donacion3.
+	aux4 add: donacion4.
+
+	aux5 := OrderedCollection new.
+	aux5 add: donacion2.
+	aux5 add: donacion3.
+	aux5 add: donacion4
 ]
 
 { #category : #tests }
@@ -131,7 +145,18 @@ TestCoordinador >> testConsultaDePagos [
 { #category : #tests }
 TestCoordinador >> testDonacionesEntre [
 
-	self assert: false
+	self
+		assert: (coor donacionesEntre: fecha1 y: fecha2)
+		equals: aux4 asOrderedCollection.
+
+	donacion1 fecha: (Date year: 2019 month: 9 day: 30).
+	"Cambiamos la fecha de una de las donaciones"
+	
+	self
+		assert: (coor donacionesEntre: fecha1 y: fecha2)
+		equals: aux5 asOrderedCollection
+
+	
 ]
 
 { #category : #tests }

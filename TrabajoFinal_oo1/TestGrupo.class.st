@@ -63,22 +63,6 @@ TestGrupo >> testAltaDeIntegranteEnOrganizacion [
 ]
 
 { #category : #tests }
-TestGrupo >> testAltaDeOrganismo [
-
-	self deny:
-		(grupo1 organizaciones anySatisfy: [ :o | o nombre = 'Z.R' ]).
-
-	grupo1
-		altaOrganismo: 'Leandre Mikel '
-		denominacion: 'SAA'
-		direccion: '7 y 56'
-		nombre: 'Oscorp'.
-
-	self assert:
-		(grupo1 organizaciones anySatisfy: [ :o | o nombre = 'Oscorp' ])
-]
-
-{ #category : #tests }
 TestGrupo >> testAltaDonante [
 
 	self deny: (grupo1 existeIntegrante: 3). 
@@ -93,6 +77,22 @@ TestGrupo >> testAltaDonante [
 	
 	self assert: (grupo1 existeIntegrante: 3).
 
+]
+
+{ #category : #tests }
+TestGrupo >> testAltaOrganismo [
+
+	self deny:
+		(grupo1 organizaciones anySatisfy: [ :o | o nombre = 'Z.R' ]).
+
+	grupo1
+		altaOrganismo: 'Leandre Mikel '
+		denominacion: 'SAA'
+		direccion: '7 y 56'
+		nombre: 'Oscorp'.
+
+	self assert:
+		(grupo1 organizaciones anySatisfy: [ :o | o nombre = 'Oscorp' ])
 ]
 
 { #category : #tests }
