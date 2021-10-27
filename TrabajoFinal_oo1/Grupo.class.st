@@ -15,8 +15,18 @@ Class {
 }
 
 { #category : #accessing }
+Grupo class >> clearSoleInstance [
+soleInstance:=nil.
+]
+
+{ #category : #accessing }
 Grupo class >> soleInstance [
 ^soleInstance ifNil:[soleInstance:=self new].
+]
+
+{ #category : #accessing }
+Grupo class >> soleInstanceWithExample [
+soleInstance:=self new example.
 ]
 
 { #category : #private }
@@ -105,6 +115,55 @@ Grupo >> donantesEnMesActualDe: unaOrganizacion [
 		   collect: [ :donacion | donacion donante ]) asSet
 ]
 
+{ #category : #examples }
+Grupo >> example [
+
+	| coor donacion1 donacion2  donante1 donante2 org1 org2  tipo1 tipo2 |
+self
+		altaDonante: 'Carlos Griguol'
+		dni: 22333444
+		telefono: 0012334
+		email: 'lobo@ee.com'
+		legajo: '12345/6'.
+
+self 
+		altaDonante: 'Leandre Mikaliunes'
+		dni: 111111111
+		telefono: 221888666
+		email: 'lobo22@ea.com'
+		legajo: '00001/1'.
+
+	self
+		altaCoordinador: 'Fernando Palacios'
+		dni: 111123
+		telefono: 00011231
+		legajo: '12345/0'.
+	coor := self coordinador.
+
+	org1 := Organizacion
+		        newNombre: 'Microsoft'
+		        representante: 'Bill Gates'
+		        denominacion: 'SAA'
+		        direccion: 'Nueva Zelanda?'.
+		
+	org2 := Organizacion
+		        newNombre: 'Apple'
+		        representante: 'Bill messi'
+		        denominacion: 'SAA'
+		        direccion: 'Nueva inglaterra'.
+	self agregarOrganizacion: org1.
+	self agregarOrganizacion: org2.
+	self altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
+	self altaDeIntegranteEnOrganizacion: 1 organizacion: org2.
+	self altaDeIntegranteEnOrganizacion: 2 organizacion: org1.
+	self altaDeIntegranteEnOrganizacion: 2 organizacion: org1.
+	
+
+ 	self pagoDonacionTransferenciaBancaria: 1  monto: 555 mes: 11 organizacion: org1.
+	self pagoDonacionEfectivo:1 monto:555 mes:12  organizacion: org1.
+
+]
+
 { #category : #private }
 Grupo >> existeIntegrante: unNroDeDonante [
 
@@ -139,10 +198,9 @@ Grupo >> integrantes [
 	^ integrantes
 ]
 
-{ #category : #private }
+{ #category : #accessing }
 Grupo >> organizaciones [
-
-	^ organizaciones
+	^organizaciones 
 ]
 
 { #category : #private }

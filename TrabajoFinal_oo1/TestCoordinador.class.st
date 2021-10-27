@@ -185,6 +185,11 @@ TestCoordinador >> testConsultaDePagos [
 ]
 
 { #category : #tests }
+TestCoordinador >> testDonacionesDeDonante [
+self assert:false.
+]
+
+{ #category : #tests }
 TestCoordinador >> testDonacionesDeDonanteEnOrganizacion [
 
 	self

@@ -25,6 +25,15 @@ OrganizacionListComponent class >> newOrg: unaOrganizacion parent: aParent coord
 	^ instance
 ]
 
+{ #category : #'as yet unclassified' }
+OrganizacionListComponent >> organizacion: unaOrganizacion parent: aParent coordi:unCoordinador [ 
+
+organizacion:= unaOrganizacion. 
+parent:= aParent .
+coordi:=unCoordinador .
+
+]
+
 { #category : #rendering }
 OrganizacionListComponent >> renderContentOn: aCanvas [
 	aCanvas heading style:' background-color: black; color:white'; with:'Final oo1 '.
@@ -36,17 +45,16 @@ OrganizacionListComponent >> renderContentOn: aCanvas [
 
 { #category : #rendering }
 OrganizacionListComponent >> renderDonaciones: aCanvas [
+	aCanvas text:'Donantes'.
 	aCanvas unorderedList: [ 
 		organizacion donantes do: [ :donante | 
-			aCanvas paragraph
-				text: 'Donaciones del Donante';
-				style: 'font-size: 20px';
-				form: [ 
+			aCanvas form: [ 
 					aCanvas render: (DonantesListComponent
 								 newDonante: donante
 								 lista:
 									 (coordi
 										  donacionesDeDonante: donante
 										  enOrganizacion: organizacion)
-								 parent: parent) ] ] ]
+								 parent: parent) ].
+							aCanvas horizontalRule.  ] ]
 ]

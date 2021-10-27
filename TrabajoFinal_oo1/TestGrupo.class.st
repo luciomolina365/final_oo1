@@ -96,15 +96,6 @@ TestGrupo >> testAltaOrganismo [
 ]
 
 { #category : #tests }
-TestGrupo >> testIngresosEntre [
-
-	self assert: false equals: true
-
-
-	"asdasdasdasd"
-]
-
-{ #category : #tests }
 TestGrupo >> testPagoDonacion [
 
 	self deny:

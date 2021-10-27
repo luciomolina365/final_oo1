@@ -57,21 +57,25 @@ aCanvas paragraph
 			aCanvas space.
 			aCanvas text: donante email.
 			aCanvas break.
-			aCanvas text: 'Donaciones '.
+			aCanvas text: 'Donaciones del donante: '.
+			aCanvas break.
+			lista isEmpty ifTrue:[aCanvas text:'No posee donaciones'].
+			aCanvas horizontalRule .
 			lista
 				do: [ :donacion | 
-			aCanvas text: 'fecha '.
+			aCanvas text: 'Fecha '.
 			aCanvas text: donacion fecha .
 			aCanvas break.
-			aCanvas text: 'Monto Neto'.
+			aCanvas text: 'Monto Neto: '.
 			aCanvas text: donacion montoNeto .
 			aCanvas break.
 			aCanvas text: 'Organizacion '.
-			aCanvas text: donacion organizacion .
+			aCanvas text: donacion organizacion nombre  .
 			aCanvas break.
 			aCanvas text: 'Mes Pago '.
 			aCanvas space.
 			aCanvas text: donacion mesPago .
-			aCanvas break.].
+			aCanvas break.
+			aCanvas horizontalRule .].
 			aCanvas break.]
 ]
