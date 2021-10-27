@@ -25,10 +25,38 @@ parent:= aParent.
 
 { #category : #rendering }
 DonantesComponent >> renderContentOn: aCanvas [
-	aCanvas heading
-		style: ' background-color: black; color:white';
-		with: 'Final oo1 '.
-	aCanvas horizontalRule.
+
+	aCanvas text: 'Integrante '.
+	aCanvas strong with: [ 
+		aCanvas anchor
+			callback: [ parent verDonaciones: donante ];
+			with: donante nombre ].
+	aCanvas break.
+	aCanvas text: 'Dni:'.
+	aCanvas space.
+	aCanvas text: donante dni.
+	aCanvas break.
+	aCanvas text: 'Telefono:'.
+	aCanvas space.
+	aCanvas text: donante telefono.
+	aCanvas break.
+	aCanvas text: 'Legajo:'.
+	aCanvas space.
+	aCanvas text: donante legajo.
+	aCanvas break.
+	aCanvas text: 'Nro Donante:'.
+	aCanvas space.
+	aCanvas text: donante nroDonante.
+	aCanvas break.
+	aCanvas text: 'Email:'.
+	aCanvas space.
+	aCanvas text: donante email.
+	aCanvas break.
+	aCanvas horizontalRule
+]
+
+{ #category : #rendering }
+DonantesComponent >> renderDonante: aCanvas [
 	aCanvas text: 'Integrante '.
 	aCanvas strong with: [ 
 		aCanvas anchor

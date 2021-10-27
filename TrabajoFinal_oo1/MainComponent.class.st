@@ -13,21 +13,11 @@ MainComponent >> model [
 MainComponent >> renderContentOn: aCanvas [
 	aCanvas heading style:' background-color: black; color:white'; with:'FINAL OO1 '.
 	aCanvas horizontalRule.
-	self renderOrganizaciones: aCanvas .
-	aCanvas break.
+	self renderOrganizaciones:aCanvas.
 	aCanvas horizontalRule.
- self renderIntegrantes: aCanvas .
-	
-]
+	self renderIntegrantes: aCanvas .
 
-{ #category : #rendering }
-MainComponent >> renderFuncionesButtonOn: aCanvas [
-	aCanvas
-		paragraph: [ aCanvas anchor
-				callback: [ self renderOrganizaciones: aCanvas ];
-				with: [ aCanvas button with: 'Ver Organizacion' ]. 
-		 aCanvas callback: [ self renderIntegrantes: aCanvas  ];
-		with: [ aCanvas button: 'Ver Donantes' ]].
+	
 ]
 
 { #category : #rendering }
@@ -48,12 +38,12 @@ MainComponent >> renderOrganizaciones: aCanvas [
 MainComponent >> verDonaciones: unDonante [
 
 	| instance coordi |
-	coordi :=self model coordinador .
+	coordi := self model coordinador.
 	instance := DonantesListComponent
 		            newDonante: unDonante
-		            lista: (coordi donacionesDeDonante:unDonante)
-		            parent: self .
-		            self call: instance
+		            lista: (coordi donacionesDeDonante: unDonante)
+		            parent: self.
+	self call: instance
 ]
 
 { #category : #'as yet unclassified' }

@@ -27,7 +27,7 @@ parent:= aParent.
 ]
 
 { #category : #rendering }
-DonantesListComponent >> renderContentOn: aCanvas [
+DonantesListComponent >> renderContentOn: aCanvas [ 
 	aCanvas paragraph
 		style: 'font-size: 20px';
 		with: [ 
@@ -77,4 +77,5 @@ DonantesListComponent >> renderContentOn: aCanvas [
 				aCanvas break.
 				aCanvas horizontalRule ].
 			aCanvas break ]
+
 ]
