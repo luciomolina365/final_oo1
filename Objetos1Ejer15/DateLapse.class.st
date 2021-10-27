@@ -37,7 +37,7 @@ DateLapse >> from [
 ^from
 ]
 
-{ #category : #testing }
+{ #category : #accesing }
 DateLapse >> includesDate: aDate [
 	
 	  (aDate isOnOrAfter: self from) & (aDate isOnOrBefore: self to) ifTrue: [^true].
@@ -47,14 +47,15 @@ DateLapse >> includesDate: aDate [
 { #category : #'instance creation' }
 DateLapse >> newFechaIni: unaFechaI fechaFin: unaFechaF [
 
-from :=Date fromString: unaFechaI.
-to :=Date fromString: unaFechaF.
+	from := Date fromString: unaFechaI.
+	to := Date fromString: unaFechaF
 ]
 
 { #category : #'instance creation' }
-DateLapse >> newFechaInicial: unaFechaI fechaFinal:unaFechaF [.
-from :=unaFechaI.
-to :=unaFechaF.
+DateLapse >> newFechaInicial: unaFechaI fechaFinal: unaFechaF [
+
+	from := unaFechaI.
+	to := unaFechaF
 ]
 
 { #category : #accesing }
