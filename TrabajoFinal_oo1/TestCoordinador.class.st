@@ -186,7 +186,12 @@ TestCoordinador >> testConsultaDePagos [
 
 { #category : #tests }
 TestCoordinador >> testDonacionesDeDonante [
-self assert:false.
+
+	self
+		assert: (coor donacionesDeDonante: donante3)
+		equals: aux asOrderedCollection.
+
+	self assert: (coor donacionesDeDonante: donante4) isEmpty
 ]
 
 { #category : #tests }
