@@ -28,13 +28,13 @@ parent:= aParent.
 
 { #category : #rendering }
 DonantesListComponent >> renderContentOn: aCanvas [
-
-aCanvas paragraph
+	aCanvas paragraph
 		style: 'font-size: 20px';
-		with: [ aCanvas text: 'Integrante '.
-			aCanvas strong
-				with: [ aCanvas anchor
-						callback: [ ];
+		with: [ 
+			aCanvas text: 'Integrante '.
+			aCanvas strong with: [ 
+					aCanvas anchor
+						callback: [  ];
 						with: donante nombre ].
 			aCanvas break.
 			aCanvas text: 'Dni:'.
@@ -51,7 +51,7 @@ aCanvas paragraph
 			aCanvas break.
 			aCanvas text: 'Nro Donante:'.
 			aCanvas space.
-			aCanvas text: donante nroDonante .
+			aCanvas text: donante nroDonante.
 			aCanvas break.
 			aCanvas text: 'Email:'.
 			aCanvas space.
@@ -59,23 +59,22 @@ aCanvas paragraph
 			aCanvas break.
 			aCanvas text: 'Donaciones del donante: '.
 			aCanvas break.
-			lista isEmpty ifTrue:[aCanvas text:'No posee donaciones'].
-			aCanvas horizontalRule .
-			lista
-				do: [ :donacion | 
-			aCanvas text: 'Fecha '.
-			aCanvas text: donacion fecha .
-			aCanvas break.
-			aCanvas text: 'Monto Neto: '.
-			aCanvas text: donacion montoNeto .
-			aCanvas break.
-			aCanvas text: 'Organizacion '.
-			aCanvas text: donacion organizacion nombre  .
-			aCanvas break.
-			aCanvas text: 'Mes Pago '.
-			aCanvas space.
-			aCanvas text: donacion mesPago .
-			aCanvas break.
-			aCanvas horizontalRule .].
-			aCanvas break.]
+			lista isEmpty ifTrue: [ aCanvas text: 'No posee donaciones' ].
+			aCanvas horizontalRule.
+			lista do: [ :donacion | 
+				aCanvas text: 'Fecha '.
+				aCanvas text: donacion fecha.
+				aCanvas break.
+				aCanvas text: 'Monto Neto: '.
+				aCanvas text: donacion montoNeto.
+				aCanvas break.
+				aCanvas text: 'Organizacion '.
+				aCanvas text: donacion organizacion nombre.
+				aCanvas break.
+				aCanvas text: 'Mes Pago '.
+				aCanvas space.
+				aCanvas text: donacion mesPago.
+				aCanvas break.
+				aCanvas horizontalRule ].
+			aCanvas break ]
 ]

@@ -50,7 +50,7 @@ MainComponent >> verDonaciones: unDonante [
 	| instance coordi |
 	coordi :=self model coordinador .
 	instance := DonantesListComponent
-		            donante: unDonante
+		            newDonante: unDonante
 		            lista: (coordi donacionesDeDonante:unDonante)
 		            parent: self .
 		            self call: instance

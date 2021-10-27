@@ -25,6 +25,10 @@ parent:= aParent.
 
 { #category : #rendering }
 DonantesComponent >> renderContentOn: aCanvas [
+	aCanvas heading
+		style: ' background-color: black; color:white';
+		with: 'Final oo1 '.
+	aCanvas horizontalRule.
 	aCanvas text: 'Integrante '.
 	aCanvas strong with: [ 
 		aCanvas anchor
@@ -50,5 +54,6 @@ DonantesComponent >> renderContentOn: aCanvas [
 	aCanvas text: 'Email:'.
 	aCanvas space.
 	aCanvas text: donante email.
-	aCanvas break
+	aCanvas break.
+	aCanvas horizontalRule .
 ]
