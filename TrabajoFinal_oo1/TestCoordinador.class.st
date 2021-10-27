@@ -143,6 +143,21 @@ TestCoordinador >> testConsultaDePagos [
 ]
 
 { #category : #tests }
+TestCoordinador >> testDonacionesDeDonanteEnOrganizacion [
+
+	self
+		assert: (coor donacionesDeDonante: donante3 enOrganizacion: org1)
+		equals: donacion1 asOrderedCollection.
+	self
+		deny: (coor donacionesDeDonante: donante3 enOrganizacion: org1)
+		equals: aux. "Comprobamos que sean solo las destinadas a esa organizacion"
+
+	self assert:
+		(coor donacionesDeDonante: donante1 enOrganizacion: org2) isEmpty 
+		"Comprobamos cuando no hay donaciones que cumplan con la condicion"
+]
+
+{ #category : #tests }
 TestCoordinador >> testDonacionesEntre [
 
 	self
