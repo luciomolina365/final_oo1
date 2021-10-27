@@ -18,7 +18,9 @@ Class {
 		'fecha1',
 		'fecha2',
 		'aux4',
-		'aux5'
+		'aux5',
+		'fecha3',
+		'donante4'
 	],
 	#category : #'TrabajoFinal_oo1-Tests'
 }
@@ -53,6 +55,14 @@ TestCoordinador >> setUp [
 		            legajo: '001231/2'
 		            email: 'asdasd@ea.com'
 		            nroDonante: 333.
+		
+	donante4 := Donante
+		            newNombre: 'Lionel Messi'
+		            dni: 3453423
+		            telefono: 0009234
+		            legajo: '23/2'
+		            email: 'barca@ea.com'
+		            nroDonante: 222.
 
 	org1 := Organizacion
 		        newNombre: 'Microsoft'
@@ -67,6 +77,7 @@ TestCoordinador >> setUp [
 
 	org1 agregarDonante: donante3.
 	org1 agregarDonante: donante1.
+	org1 agregarDonante: donante4.
 
 	org2 agregarDonante: donante2.
 	org2 agregarDonante: donante3.
@@ -115,6 +126,7 @@ TestCoordinador >> setUp [
 
 	fecha1 := Date year: 2020 month: 1 day: 1.
 	fecha2 := Date year: 2022 month: 1 day: 1.
+	fecha3 := Date year: 2019 month: 1 day: 1.
 
 	aux4 := OrderedCollection new.
 	aux4 add: donacion1.
@@ -125,7 +137,37 @@ TestCoordinador >> setUp [
 	aux5 := OrderedCollection new.
 	aux5 add: donacion2.
 	aux5 add: donacion3.
-	aux5 add: donacion4
+	aux5 add: donacion4.
+]
+
+{ #category : #'as yet unclassified' }
+TestCoordinador >> testAgregarDonacion [
+
+	self assert: coor donaciones size equals: 4.
+
+	coor
+		agregarDonacion: donante4
+		mes: 6
+		forma: Efectivo new
+		organizacion: org1
+		monto: 666.
+
+	self assert: coor donaciones size equals: 5.
+
+	self assert:
+		(coor donaciones anySatisfy: [ :d | d perteneceA: donante4 ])
+]
+
+{ #category : #tests }
+TestCoordinador >> testCalcularIngresosEntre [
+
+	self
+		assert: (coor calcularIngresosEntre: fecha1 y: fecha2)
+		equals: 2650. "La fecha de las donaciones se asigna cuando se crea."
+
+	self 
+		assert: (coor calcularIngresosEntre: fecha3 y: fecha1) 
+		equals: 0 "Rango de fechas sin donaciones"
 ]
 
 { #category : #tests }
