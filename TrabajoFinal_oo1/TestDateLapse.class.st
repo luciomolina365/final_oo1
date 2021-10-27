@@ -13,13 +13,19 @@ Class {
 TestDateLapse >> setUp [
 	periodo1 := DateLapse newFechaIni: '1999/1/1' fechaFin: '1999/1/4'.
 	periodo2 := DateLapse newFechaIni: '1999/1/1' fechaFin: '1999/1/1'.
-	periodo3 := DateLapse newFechaIni: '2021/1/1' fechaFin: '2022/1/1'.
+	periodo3 := DateLapse newFechaIni: '2021/1/1' fechaFin: '2021/1/3'.
 ]
 
 { #category : #tests }
 TestDateLapse >> testIncludesDate [
 
+	"2021/1/2"
+
+	self assert:
+		(periodo3 includesDate: (Date year: 2021 month: 1 day: 2)).
 	
+	self deny:
+		(periodo3 includesDate: (Date year: 2021 month: 1 day: 4))	
 ]
 
 { #category : #tests }
