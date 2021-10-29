@@ -19,6 +19,11 @@ Grupo class >> clearSoleInstance [
 soleInstance:=nil.
 ]
 
+{ #category : #'instance creation' }
+Grupo class >> newPozoComun:unValor [
+^self new pozoComun:unValor.
+]
+
 { #category : #accessing }
 Grupo class >> soleInstance [
 ^soleInstance ifNil:[soleInstance:=self new].
@@ -248,4 +253,9 @@ Grupo >> pagoDonacionTransferenciaBancaria: unNroDonante monto: unMonto mes: unM
 		mes: unMes
 		organizacion: unaOrganizacion
 		tipoPago: TransferenciaBancaria new
+]
+
+{ #category : #accessing }
+Grupo >> pozoComun:unValor [
+pozoComun:=unValor.
 ]
