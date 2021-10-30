@@ -140,7 +140,7 @@ TestCoordinador >> setUp [
 	aux5 add: donacion4.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 TestCoordinador >> testAgregarDonacion [
 
 	self assert: coor donaciones size equals: 4.
@@ -206,7 +206,7 @@ TestCoordinador >> testDonacionesDeDonanteEnOrganizacion [
 
 	self assert:
 		(coor donacionesDeDonante: donante1 enOrganizacion: org2) isEmpty 
-		"Comprobamos cuando no hay donaciones que cumplan con la condicion"
+		"Comprobamos cuando no hay donaciones que cumplan con la condicion, para la org2"
 ]
 
 { #category : #tests }

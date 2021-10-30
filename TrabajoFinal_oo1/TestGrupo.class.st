@@ -96,6 +96,17 @@ TestGrupo >> testAltaOrganismo [
 ]
 
 { #category : #tests }
+TestGrupo >> testAtenderGastoExtra [
+
+	grupo1 pozoComun: 10.
+	grupo1 ALTTTTTTatenderGastoExtra: 100.
+	self assert: grupo1 pozoComun equals: 100.
+	
+	grupo1 pozoComun: 100.
+	self deny: (grupo1 ALTTTTTTatenderGastoExtra: 100). "No hizo falta solicitar ayuda"
+]
+
+{ #category : #tests }
 TestGrupo >> testPagoDonacion [
 
 	self deny:

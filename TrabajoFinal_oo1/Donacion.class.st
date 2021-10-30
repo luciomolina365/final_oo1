@@ -1,12 +1,8 @@
 Class {
 	#name : #Donacion,
-	#superclass : #Object,
+	#superclass : #Ayuda,
 	#instVars : [
-		'fecha',
-		'monto',
-		'donante',
 		'organizacion',
-		'tipo',
 		'mesPago'
 	],
 	#category : #'TrabajoFinal_oo1-Model'
@@ -23,44 +19,19 @@ Donacion class >> newDonante: unDonante monto: unMonto mesPago: unMesPago untipo
 		  organizacion: unaOrganizacion
 ]
 
-{ #category : #accessing }
-Donacion >> donante [
-
-	^ donante
-]
-
 { #category : #private }
 Donacion >> donante: unDonante monto: unMonto mesPago: unMesPago untipo: unTipo organizacion: unaOrganizacion [
 
-	donante := unDonante.
-	monto := unMonto.
-	fecha := Date today.
+	self donante: unDonante monto: unMonto untipo: unTipo.
 	mesPago := unMesPago.
-	tipo := unTipo.
 	organizacion := unaOrganizacion
-]
-
-{ #category : #accessing }
-Donacion >> esDeAnioActual [
-
-	^ fecha year = Date today year
 ]
 
 { #category : #accessing }
 Donacion >> esDeOrganizacion: unaOrganizacion [
 
+	organizacion ifNil: [ ^ false ].
 	^ organizacion == unaOrganizacion
-]
-
-{ #category : #accessing }
-Donacion >> fecha [
-^fecha
-]
-
-{ #category : #private }
-Donacion >> fecha: unaFecha [
-
-	fecha := unaFecha
 ]
 
 { #category : #accessing }
@@ -69,25 +40,6 @@ Donacion >> mesPago [
 ]
 
 { #category : #accessing }
-Donacion >> montoNeto [
-
-	^ monto - (tipo gastoDeComision: monto)
-]
-
-{ #category : #accessing }
 Donacion >> organizacion [
 ^organizacion 
-]
-
-{ #category : #accessing }
-Donacion >> perteneceA: unDonante [
-
-	^ donante == unDonante
-
-]
-
-{ #category : #accessing }
-Donacion >> perteneceAlPeriodo: unDateLapse [
-
-	^ unDateLapse includesDate: fecha
 ]
