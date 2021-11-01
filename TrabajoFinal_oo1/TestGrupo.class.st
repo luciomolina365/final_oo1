@@ -101,9 +101,10 @@ TestGrupo >> testAtenderGastoExtra [
 	grupo1 pozoComun: 10.
 	grupo1 atenderGastoExtra: 100.
 	self assert: grupo1 pozoComun equals: 100.
-	
+
 	grupo1 pozoComun: 100.
 	self deny: (grupo1 atenderGastoExtra: 100). "No hizo falta solicitar ayuda"
+	self assert: grupo1 pozoComun equals: 0
 ]
 
 { #category : #tests }
