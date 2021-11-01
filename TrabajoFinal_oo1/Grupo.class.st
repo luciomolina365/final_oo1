@@ -6,8 +6,7 @@ Class {
 		'integrantes',
 		'coordinadores',
 		'organizaciones',
-		'nroSigDonante',
-		'ayudasGastoActual'
+		'nroSigDonante'
 	],
 	#classInstVars : [
 		'soleInstance'
@@ -36,37 +35,10 @@ soleInstance:=self new example.
 ]
 
 { #category : #nuevo }
-Grupo >> ALTTTTTTatenderGastoExtra: unGasto [
+Grupo >> actualizarPozoComun:unaColeccion [
 
-	| montoASolicitar coor |
-	unGasto > pozoComun ifFalse: [ ^ false ]. "No se necesita ayuda"
-
-	coor := self coordinador.
-	montoASolicitar := (unGasto - pozoComun / integrantes size) asFloat.
-
-	self ALTTTpedirAyudaALosIntegrantes: montoASolicitar.
-
-	self ALTTTactualizarPozoComun.
-
-	^ pozoComun .
-	"^ true ""Operacion exitosa"" """
-]
-
-{ #category : #nuevo }
-Grupo >> ALTTTactualizarPozoComun [
-
-	pozoComun := pozoComun + (ayudasGastoActual sumNumbers: [ :a | 
+	pozoComun := pozoComun + (unaColeccion sumNumbers: [ :a | 
 		             a montoNeto ])
-]
-
-{ #category : #nuevo }
-Grupo >> ALTTTpedirAyudaALosIntegrantes: unMonto [
-
-	ayudasGastoActual := integrantes collect: [ :i | 
-		                     Ayuda
-			                     newDonante: i
-			                     monto: unMonto
-			                     untipo: Efectivo  new ]
 ]
 
 { #category : #private }
@@ -140,6 +112,21 @@ Grupo >> altaOrganismo: unRepresentante denominacion: unaDenominacion direccion:
 			 representante: unRepresentante
 			 denominacion: unaDenominacion
 			 direccion: unaDireccion)
+]
+
+{ #category : #nuevo }
+Grupo >> atenderGastoExtra: unGasto [
+
+	| montoASolicitar coor |
+	unGasto > pozoComun ifFalse: [ ^ false ]. "No se necesita ayuda"
+
+	coor := self coordinador.
+	montoASolicitar := (unGasto - pozoComun / integrantes size) asFloat.
+
+	self actualizarPozoComun:(self pedirAyudaALosIntegrantes: montoASolicitar).
+
+	^ true 
+	"Operacion exitosa"
 ]
 
 { #category : #private }
@@ -223,7 +210,6 @@ Grupo >> initialize [
 	organizaciones := OrderedCollection new.
 	integrantes := OrderedCollection new.
 	coordinadores := OrderedCollection new.
-	ayudasGastoActual := OrderedCollection new.
 	pozoComun := 0.0
 ]
 
@@ -289,6 +275,16 @@ Grupo >> pagoDonacionTransferenciaBancaria: unNroDonante monto: unMonto mes: unM
 		mes: unMes
 		organizacion: unaOrganizacion
 		tipoPago: TransferenciaBancaria new
+]
+
+{ #category : #nuevo }
+Grupo >> pedirAyudaALosIntegrantes: unMonto [
+
+	^integrantes collect: [ :i | 
+		                     Ayuda
+			                     newDonante: i
+			                     monto: unMonto
+			                     untipo: Efectivo  new ]
 ]
 
 { #category : #private }
