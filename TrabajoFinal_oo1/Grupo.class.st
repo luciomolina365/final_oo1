@@ -14,19 +14,9 @@ Class {
 	#category : #'TrabajoFinal_oo1-Model'
 }
 
-{ #category : #accessing }
-Grupo class >> clearSoleInstance [
-soleInstance:=nil.
-]
-
 { #category : #'instance creation' }
 Grupo class >> newPozoComun:unValor [
 ^self new pozoComun:unValor.
-]
-
-{ #category : #accessing }
-Grupo class >> soleInstance [
-^soleInstance ifNil:[soleInstance:=self new].
 ]
 
 { #category : #accessing }
