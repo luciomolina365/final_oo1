@@ -34,7 +34,7 @@ Grupo class >> soleInstanceWithExample [
 soleInstance:=self new example.
 ]
 
-{ #category : #nuevo }
+{ #category : #private }
 Grupo >> actualizarPozoComun:unaColeccion [
 
 	pozoComun := pozoComun + (unaColeccion sumNumbers: [ :a | 
@@ -114,18 +114,25 @@ Grupo >> altaOrganismo: unRepresentante denominacion: unaDenominacion direccion:
 			 direccion: unaDireccion)
 ]
 
-{ #category : #nuevo }
+{ #category : #CasosDeUso }
 Grupo >> atenderGastoExtra: unGasto [
 
 	| montoASolicitar coor |
-	unGasto > pozoComun ifFalse: [ ^ false ]. "No se necesita ayuda"
+	unGasto > pozoComun ifFalse: [ 
+		pozoComun := pozoComun - unGasto.
+		^ false ].
+	"No se necesita ayuda"
+	
+	integrantes isEmpty ifTrue: [ ^ false ].
+	"No hay integrantes a los que solicitar ayuda"
 
 	coor := self coordinador.
 	montoASolicitar := (unGasto - pozoComun / integrantes size) asFloat.
 
-	self actualizarPozoComun:(self pedirAyudaALosIntegrantes: montoASolicitar).
+	self actualizarPozoComun:
+		(self pedirAyudaALosIntegrantes: montoASolicitar).
 
-	^ true 
+	^ true
 	"Operacion exitosa"
 ]
 
@@ -277,7 +284,7 @@ Grupo >> pagoDonacionTransferenciaBancaria: unNroDonante monto: unMonto mes: unM
 		tipoPago: TransferenciaBancaria new
 ]
 
-{ #category : #nuevo }
+{ #category : #private }
 Grupo >> pedirAyudaALosIntegrantes: unMonto [
 
 	^integrantes collect: [ :i | 
