@@ -20,6 +20,11 @@ Grupo class >> newPozoComun:unValor [
 ]
 
 { #category : #accessing }
+Grupo class >> soleInstance [
+^soleInstance ifNil:[soleInstance:=self new].
+]
+
+{ #category : #accessing }
 Grupo class >> soleInstanceWithExample [
 soleInstance:=self new example.
 ]
@@ -156,6 +161,13 @@ self
 		telefono: 221888666
 		email: 'lobo22@ea.com'
 		legajo: '00001/1'.
+		
+	self 
+		altaDonante: 'Lucio Molina'
+		dni: 214567
+		telefono: 1254845
+		email: 'capo22@ea.com'
+		legajo: '00001/0'.
 
 	self
 		altaCoordinador: 'Fernando Palacios'
@@ -171,20 +183,24 @@ self
 		        direccion: 'Nueva Zelanda?'.
 		
 	org2 := Organizacion
-		        newNombre: 'Apple'
-		        representante: 'Bill messi'
+		        newNombre: 'Amazon'
+		        representante: ' Jeff Bezos'
 		        denominacion: 'SAA'
-		        direccion: 'Nueva inglaterra'.
+		        direccion: 'USA'.
 	self agregarOrganizacion: org1.
 	self agregarOrganizacion: org2.
 	self altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
-	self altaDeIntegranteEnOrganizacion: 1 organizacion: org2.
-	self altaDeIntegranteEnOrganizacion: 2 organizacion: org1.
-	self altaDeIntegranteEnOrganizacion: 2 organizacion: org1.
+	self altaDeIntegranteEnOrganizacion: 2 organizacion: org2.
+	self altaDeIntegranteEnOrganizacion: 3 organizacion: org1.
+	self altaDeIntegranteEnOrganizacion: 3 organizacion: org2.
 	
 
  	self pagoDonacionTransferenciaBancaria: 1  monto: 555 mes: 11 organizacion: org1.
 	self pagoDonacionEfectivo:1 monto:555 mes:12  organizacion: org1.
+	self pagoDonacionTransferenciaBancaria: 2  monto: 1000 mes: 11 organizacion: org2.
+	self pagoDonacionEfectivo:2 monto:1000 mes:12  organizacion: org2.
+	self pagoDonacionPagoFacil:3 monto:5000 mes:12  organizacion: org1.
+	self pagoDonacionEfectivo:3 monto:5000 mes:12  organizacion: org2.
 
 ]
 
