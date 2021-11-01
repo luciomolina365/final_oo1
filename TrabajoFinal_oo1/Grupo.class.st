@@ -131,7 +131,7 @@ Grupo >> atenderGastoExtra: unGasto [
 	"Operacion exitosa"
 ]
 
-{ #category : #private }
+{ #category : #accessing }
 Grupo >> coordinador [
 
 	^ coordinadores first
