@@ -2,18 +2,18 @@ Class {
 	#name : #TestDonacion,
 	#superclass : #TestCase,
 	#instVars : [
-		'donacion1',
 		'donante1',
-		'tipo1',
 		'org1',
-		'donacion2',
+		'tipo1',
+		'donacion1',
 		'donante2',
-		'tipo2',
 		'org2',
-		'donacion3',
+		'tipo2',
+		'donacion2',
 		'donante3',
+		'org3',
 		'tipo3',
-		'org3'
+		'donacion3'
 	],
 	#category : #'TrabajoFinal_oo1-Tests'
 }
@@ -88,51 +88,10 @@ TestDonacion >> setUp [
 		             organizacion: org3
 ]
 
-{ #category : #accessing }
-TestDonacion >> testEsDeAnioActual [
-
-	self assert: donacion1 esDeAnioActual equals: true.
-	"La fecha se asigna en la creacion de la instacia"
-	
-	donacion1 fecha: (Date year: 1999 month: 9 day: 9).
-	self assert: donacion1 esDeAnioActual equals: false.
-	
-	donacion1 fecha: (Date year: 2021 month: 9 day: 9).
-	self assert: donacion1 esDeAnioActual equals: true.
-]
-
 { #category : #tests }
 TestDonacion >> testEsDeOrganizacion [
 
 	self assert: (donacion1 esDeOrganizacion: org1) equals: true.
 	self deny: (donacion1 esDeOrganizacion: org2) equals: true.
 	
-]
-
-{ #category : #tests }
-TestDonacion >> testMontoNeto [
-
-	self assert: donacion1 montoNeto equals: 499.5. "TransferenciaBancaria 10%"
-	self assert: donacion2 montoNeto equals: 555. "Efectivo 0%"
-	self assert: donacion3 montoNeto equals: 471.75 "PagoFacil 15%"
-]
-
-{ #category : #tests }
-TestDonacion >> testPerteneceA [
-
-	self assert: (donacion1 perteneceA: donante1 ).
-	self deny: (donacion1 perteneceA: donante2 ).
-	
-]
-
-{ #category : #tests }
-TestDonacion >> testPerteneceAlPeriodo [
-
-	| d |
-	d := DateLapse newFechaIni: '1999/09/02' fechaFin: '2003/09/10'.
-	self deny: [ donacion1 perteneceAlPeriodo: d ]. "Fecha de hoy"
-	self deny: [ donacion2 perteneceAlPeriodo: d ]. "1999/1/1"
-	d := DateLapse newFechaIni: '1999/09/02' fechaFin: '3000/12/11'.
-	self assert: [ donacion1 perteneceAlPeriodo: d ]. "Fecha de hoy"
-	self deny: [ donacion2 perteneceAlPeriodo: d ] "1999/1/1"
 ]
