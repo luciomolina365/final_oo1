@@ -32,12 +32,12 @@ DateLapse class >> newPeriodoDeMesActual [
 	^ self new periodoDeMesActual
 ]
 
-{ #category : #'instance creation' }
+{ #category : #accessing }
 DateLapse >> from [ 
 ^from
 ]
 
-{ #category : #'instance creation' }
+{ #category : #accessing }
 DateLapse >> includesDate: aDate [ 
 
 	  (aDate isOnOrAfter: self from) & (aDate isOnOrBefore: self to) ifTrue: [^true].
@@ -58,7 +58,7 @@ DateLapse >> newFechaInicial: unaFechaI fechaFinal: unaFechaF [
 	to := unaFechaF
 ]
 
-{ #category : #'instance creation' }
+{ #category : #accessing }
 DateLapse >> periodoDeMesActual [ 
 
 	to := Date today.
@@ -67,7 +67,7 @@ DateLapse >> periodoDeMesActual [
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : #accessing }
 DateLapse >> sizeInDays [ 
 	|dias|
 	dias := (self to - self from) asDays.
@@ -76,7 +76,7 @@ DateLapse >> sizeInDays [
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : #accessing }
 DateLapse >> to [ 
 ^to 
 
