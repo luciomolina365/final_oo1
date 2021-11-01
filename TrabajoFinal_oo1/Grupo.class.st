@@ -147,7 +147,7 @@ Grupo >> donantesEnMesActualDe: unaOrganizacion [
 { #category : #examples }
 Grupo >> example [
 
-	| coor donacion1 donacion2  donante1 donante2 org1 org2  tipo1 tipo2 |
+	| coor org1 org2 org3 |
 self
 		altaDonante: 'Carlos Griguol'
 		dni: 22333444
@@ -168,6 +168,13 @@ self
 		telefono: 1254845
 		email: 'capo22@ea.com'
 		legajo: '00001/0'.
+		
+	self 
+		altaDonante: 'Tobias Ajenjo'
+		dni: 5151264
+		telefono: 1515151
+		email: 'LALAA22@.com'
+		legajo: '99999/9'.
 
 	self
 		altaCoordinador: 'Fernando Palacios'
@@ -187,8 +194,16 @@ self
 		        representante: ' Jeff Bezos'
 		        denominacion: 'SAA'
 		        direccion: 'USA'.
+		
+	org3:=Organizacion newNombre: 'Oscorp'
+		        representante: ' Jim Carrey'
+		        denominacion: 'SAA'
+		        direccion: 'New York'. 	
+
+
 	self agregarOrganizacion: org1.
 	self agregarOrganizacion: org2.
+	self agregarOrganizacion: org3.
 	self altaDeIntegranteEnOrganizacion: 1 organizacion: org1.
 	self altaDeIntegranteEnOrganizacion: 2 organizacion: org2.
 	self altaDeIntegranteEnOrganizacion: 3 organizacion: org1.
